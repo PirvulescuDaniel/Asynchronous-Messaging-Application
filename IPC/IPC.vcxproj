@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Session.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

@@ -1,10 +1,5 @@
 #pragma once
 
-namespace asio
-{
-	class const_buffers_1;
-}
-
 class IRequest
 {
 public:

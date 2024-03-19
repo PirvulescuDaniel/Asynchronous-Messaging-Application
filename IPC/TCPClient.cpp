@@ -130,7 +130,7 @@ void TCPClient::OnRequestComplete(SessionPtr aSession)
 	{
 		std::unique_lock<std::mutex> activeSessionsLock(mActiveSessionsGuard);
 
-		auto sessionIt = mActiveSessions.find(aSession->mRequestId);
+		auto sessionIt = mActiveSessions.find(aSession->mRequest->GetId());
 		if (sessionIt != mActiveSessions.end())
 			mActiveSessions.erase(sessionIt);
 	}

@@ -48,5 +48,4 @@ private:
 
 	std::unique_ptr<asio::io_service::work> mWork;
 	std::unique_ptr<std::thread>            mServiceThreadPool;
-
 };

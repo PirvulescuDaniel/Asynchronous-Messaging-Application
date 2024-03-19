@@ -25,8 +25,7 @@ struct Session
 	asio::ip::tcp::socket   mSocket;
 	asio::ip::tcp::endpoint mServerEndpoint;
 
-	IRequest*    mRequest;
-	unsigned int mRequestId;
+	IRequest* mRequest;
 
 	std::string     mResponse;
 	asio::streambuf mResponseBuffer;

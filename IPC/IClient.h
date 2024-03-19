@@ -1,14 +1,14 @@
 #pragma once
 
+class IRequest;
+
 class IClient
 {
 public:
 
 	virtual ~IClient() = default;
 
-	virtual void SendRequest() = 0;
-
-	virtual void ReceiveResponse() = 0;
+	virtual void SendRequest(IRequest* aRequest, std::string_view aServerIp, unsigned short aServerPort) = 0;
 
 	virtual void CancelRequest() = 0;
 

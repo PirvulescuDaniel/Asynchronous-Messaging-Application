@@ -19,8 +19,11 @@
     <Filter Include="Source Files\TCPClient">
       <UniqueIdentifier>{e9b3c19e-772b-4d64-b929-6077b1583dac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interfaces">
+    <Filter Include="Header Files\Request">
       <UniqueIdentifier>{72a11c9a-92d0-4a60-b9cb-0a5ac215a0bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Request">
+      <UniqueIdentifier>{bc68f1e0-130a-4cbd-bd2d-3bcbe56385cf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,8 +36,11 @@
     <ClInclude Include="TCPClient.h">
       <Filter>Header Files\TCPClient</Filter>
     </ClInclude>
+    <ClInclude Include="IRequest.h">
+      <Filter>Header Files\Request</Filter>
+    </ClInclude>
     <ClInclude Include="IClient.h">
-      <Filter>Header Files\Interfaces</Filter>
+      <Filter>Header Files\TCPClient</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

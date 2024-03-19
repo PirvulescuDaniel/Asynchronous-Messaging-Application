@@ -5,6 +5,7 @@
 #include <thread>
 #include <functional>
 #include <mutex>
+#include <istream>
 
 //STL
 #include <string>

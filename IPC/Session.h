@@ -2,22 +2,22 @@
 #include "pch.h"
 
 class IRequestCallback;
+class IRequest;
 
 /*
 	A structure that defines a request session.
 */
 struct Session
 {
+
   Session(asio::io_service& aIoService,
           std::string_view  aServerIp,	
           unsigned short    aServerPort,
-          std::string_view  aRequest,
-          unsigned int      aRequestId,
+          IRequest*         aRequest,
           IRequestCallback* aCallback)
     : mSocket(aIoService)
     , mServerEndpoint(asio::ip::address::from_string(aServerIp.data()), aServerPort)
     , mRequest(aRequest)
-    , mRequestId(aRequestId)
     , mCallback(aCallback)
 	{
 	}
@@ -25,7 +25,7 @@ struct Session
 	asio::ip::tcp::socket   mSocket;
 	asio::ip::tcp::endpoint mServerEndpoint;
 
-	std::string  mRequest;
+	IRequest*    mRequest;
 	unsigned int mRequestId;
 
 	std::string     mResponse;

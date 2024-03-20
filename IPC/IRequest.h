@@ -11,10 +11,10 @@ public:
 
 	virtual ~IRequest() = default;
 
-	virtual RequestType           GetType()   const = 0;
+	virtual RequestType           GetType()         const = 0;
+																						      
+	virtual unsigned int          GetId()           const = 0;
 
-	virtual unsigned int          GetId()     const = 0;
-
-	virtual asio::const_buffers_1 GetBuffer() const = 0;
+	virtual asio::const_buffers_1 GetBufferToSend() const = 0;
 
 };

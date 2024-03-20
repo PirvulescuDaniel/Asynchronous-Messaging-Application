@@ -16,7 +16,7 @@ public:
 
 	void SendRequest(RequestPtr aRequest, std::string_view aServerIp, unsigned short aServerPort) override;
 
-	void CancelRequest() override;
+	void CancelRequest(unsigned int aRequestId) override;
 
 	void Close() override;
 

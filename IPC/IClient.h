@@ -11,7 +11,7 @@ public:
 
 	virtual void SendRequest(RequestPtr aRequest, std::string_view aServerIp, unsigned short aServerPort) = 0;
 
-	virtual void CancelRequest() = 0;
+	virtual void CancelRequest(unsigned int aRequestId) = 0;
 
 	virtual void Close() = 0;
 };

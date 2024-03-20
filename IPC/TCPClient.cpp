@@ -42,9 +42,20 @@ void TCPClient::SendRequest(Session::RequestPtr aRequest, std::string_view aServ
 	);
 }
 
-void TCPClient::CancelRequest()
+void TCPClient::CancelRequest(unsigned int aRequestId)
 {
-	//TODO
+	std::unique_lock<std::mutex> activeSessionsLock(mActiveSessionsGuard);
+
+	auto sessionIt = mActiveSessions.find(aRequestId);
+	if (sessionIt != mActiveSessions.end())
+	{
+		auto& session = sessionIt->second;
+
+		std::unique_lock<std::mutex> cancelLock(session->mCancelGuard);
+
+		session->mCanceled = true;
+		session->mSocket.cancel();
+	}
 }
 
 void TCPClient::Close()

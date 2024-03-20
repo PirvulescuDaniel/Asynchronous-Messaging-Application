@@ -2,17 +2,19 @@
 #include "IClient.h"
 
 struct Session;
+class  IRequest;
 
 class TCPClient : public IClient
 {
 public:
 
+	using RequestPtr  = std::shared_ptr<IRequest>;
 	using SessionPtr  = std::shared_ptr<Session>;
 	using SessionsMap = std::unordered_map<unsigned int, SessionPtr>;
 
 	TCPClient();
 
-	void SendRequest(IRequest* aRequest, std::string_view aServerIp, unsigned short aServerPort) override;
+	void SendRequest(RequestPtr aRequest, std::string_view aServerIp, unsigned short aServerPort) override;
 
 	void CancelRequest() override;
 

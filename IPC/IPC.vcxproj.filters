@@ -42,6 +42,9 @@
     <ClInclude Include="IClient.h">
       <Filter>Header Files\TCPClient</Filter>
     </ClInclude>
+    <ClInclude Include="RequestText.h">
+      <Filter>Header Files\Request</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -49,6 +52,9 @@
     </ClCompile>
     <ClCompile Include="TCPClient.cpp">
       <Filter>Source Files\TCPClient</Filter>
+    </ClCompile>
+    <ClCompile Include="RequestText.cpp">
+      <Filter>Source Files\Request</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

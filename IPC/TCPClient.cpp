@@ -16,7 +16,7 @@ TCPClient::TCPClient()
 	));
 }
 
-void TCPClient::SendRequest(IRequest* aRequest, std::string_view aServerIp, unsigned short aServerPort)
+void TCPClient::SendRequest(Session::RequestPtr aRequest, std::string_view aServerIp, unsigned short aServerPort)
 {
 	auto session = std::make_shared<Session>(mIoService, aServerIp, aServerPort, aRequest, nullptr); //to be modified.
 
@@ -68,7 +68,7 @@ void TCPClient::OnConnect(SessionPtr aSession)
 		}
 	}
 	
-	asio::async_write(aSession->mSocket, aSession->mRequest->GetBuffer(),
+	asio::async_write(aSession->mSocket, aSession->mRequest->GetBufferToSend(),
 		[this,aSession](const asio::error_code& aErrorCode, std::size_t aBytesTransferred)
 		{
 			if (aErrorCode.value() != 0)

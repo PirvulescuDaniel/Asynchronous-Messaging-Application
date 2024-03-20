@@ -9,11 +9,12 @@ class IRequest;
 */
 struct Session
 {
+	using RequestPtr = std::shared_ptr<IRequest>;
 
   Session(asio::io_service& aIoService,
           std::string_view  aServerIp,	
           unsigned short    aServerPort,
-          IRequest*         aRequest,
+          RequestPtr        aRequest,
           IRequestCallback* aCallback)
     : mSocket(aIoService)
     , mServerEndpoint(asio::ip::address::from_string(aServerIp.data()), aServerPort)
@@ -25,7 +26,7 @@ struct Session
 	asio::ip::tcp::socket   mSocket;
 	asio::ip::tcp::endpoint mServerEndpoint;
 
-	IRequest* mRequest;
+	RequestPtr mRequest;
 
 	std::string     mResponse;
 	asio::streambuf mResponseBuffer;

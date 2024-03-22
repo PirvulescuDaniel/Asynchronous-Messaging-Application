@@ -45,6 +45,9 @@
     <ClInclude Include="RequestText.h">
       <Filter>Header Files\Request</Filter>
     </ClInclude>
+    <ClInclude Include="RequestEncoder.h">
+      <Filter>Header Files\Request</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -54,6 +57,9 @@
       <Filter>Source Files\TCPClient</Filter>
     </ClCompile>
     <ClCompile Include="RequestText.cpp">
+      <Filter>Source Files\Request</Filter>
+    </ClCompile>
+    <ClCompile Include="RequestEncoder.cpp">
       <Filter>Source Files\Request</Filter>
     </ClCompile>
   </ItemGroup>

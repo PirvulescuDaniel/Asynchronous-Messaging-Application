@@ -10,7 +10,7 @@ public:
 
 	unsigned int GetId() const override;
 
-	asio::const_buffers_1 GetBufferToSend() const override;
+	std::string GetRequest() const override;
 
 private:
 	std::string  mMessage;

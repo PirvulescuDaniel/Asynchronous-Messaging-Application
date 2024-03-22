@@ -2,6 +2,7 @@
 #include "TCPClient.h"
 #include "Session.h"
 #include "IRequest.h"
+#include "RequestEncoder.h"
 
 TCPClient::TCPClient()
 {
@@ -79,7 +80,10 @@ void TCPClient::OnConnect(SessionPtr aSession)
 		}
 	}
 	
-	asio::async_write(aSession->mSocket, aSession->mRequest->GetBufferToSend(),
+	RequestEncoder encoder;
+	const auto encodedRequest = encoder.EncodeRequest(aSession->mRequest.get());
+
+	asio::async_write(aSession->mSocket, asio::buffer(encodedRequest),
 		[this,aSession](const asio::error_code& aErrorCode, std::size_t aBytesTransferred)
 		{
 			if (aErrorCode.value() != 0)

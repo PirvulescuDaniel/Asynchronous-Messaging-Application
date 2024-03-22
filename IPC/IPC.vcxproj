@@ -142,6 +142,7 @@
     <ClInclude Include="IClient.h" />
     <ClInclude Include="IRequest.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="RequestEncoder.h" />
     <ClInclude Include="RequestText.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="TCPClient.h" />
@@ -157,6 +158,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="RequestEncoder.cpp" />
     <ClCompile Include="RequestText.cpp" />
     <ClCompile Include="TCPClient.cpp" />
   </ItemGroup>

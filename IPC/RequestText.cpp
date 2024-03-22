@@ -17,11 +17,7 @@ unsigned int RequestText::GetId() const
 	return mRequestId;
 }
 
-asio::const_buffers_1 RequestText::GetBufferToSend() const
+std::string RequestText::GetRequest() const
 {
-	const auto messageTypeInt = static_cast<int>(GetType());
-
-	const auto bufferToSend = std::to_string(messageTypeInt) + mMessage;
-
-	return asio::buffer(bufferToSend);
+  return mMessage;
 }

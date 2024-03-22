@@ -1,8 +1,8 @@
 #pragma once
 #include "IClient.h"
 
-struct Session;
-class  IRequest;
+class Session;
+class IRequest;
 
 class TCPClient : public IClient
 {

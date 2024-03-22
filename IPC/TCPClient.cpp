@@ -16,7 +16,7 @@ TCPClient::TCPClient()
 	));
 }
 
-void TCPClient::SendRequest(Session::RequestPtr aRequest, std::string_view aServerIp, unsigned short aServerPort)
+void TCPClient::SendRequest(RequestPtr aRequest, std::string_view aServerIp, unsigned short aServerPort)
 {
 	auto session = std::make_shared<Session>(mIoService, aServerIp, aServerPort, aRequest, nullptr); //to be modified.
 

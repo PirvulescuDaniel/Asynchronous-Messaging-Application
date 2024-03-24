@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
 
-class IRequestCallback;
+class IRequestHandler;
 class IRequest;
 
 /*
@@ -17,11 +17,11 @@ public:
           std::string_view  aServerIp,	
           unsigned short    aServerPort,
           RequestPtr        aRequest,
-          IRequestCallback* aCallback)
+          IRequestHandler*  aHandler)
     : mSocket(aIoService)
     , mServerEndpoint(asio::ip::address::from_string(aServerIp.data()), aServerPort)
     , mRequest(aRequest)
-    , mCallback(aCallback)
+    , mHandler(aHandler)
 	{
 	}
 
@@ -36,7 +36,7 @@ public:
 	std::mutex mCancelGuard;
 	bool       mCanceled{ false };
 
-	IRequestCallback* mCallback;
+	IRequestHandler* mHandler;
 
 	asio::error_code mErrorCode;
 };

@@ -3,6 +3,7 @@
 #include "Session.h"
 #include "IRequest.h"
 #include "RequestEncoder.h"
+#include "IRequestHandler.h"
 
 TCPClient::TCPClient()
 {
@@ -156,5 +157,6 @@ void TCPClient::OnRequestComplete(SessionPtr aSession)
 	else
 		errorCode = aSession->mErrorCode;
 	
-	//TODO: call the session callback
+	// Handle sent request.
+	aSession->mHandler->Handle(aSession->mRequest, aSession->mResponse, aSession->mErrorCode);
 }

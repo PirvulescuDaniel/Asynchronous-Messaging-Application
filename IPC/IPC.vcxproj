@@ -142,12 +142,14 @@
     <ClInclude Include="IClient.h" />
     <ClInclude Include="IRequest.h" />
     <ClInclude Include="IRequestHandler.h" />
+    <ClInclude Include="IServer.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RequestEncoder.h" />
     <ClInclude Include="RequestText.h" />
     <ClInclude Include="RequestTextHandler.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="TCPClient.h" />
+    <ClInclude Include="TCPServer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -164,6 +166,7 @@
     <ClCompile Include="RequestText.cpp" />
     <ClCompile Include="RequestTextHandler.cpp" />
     <ClCompile Include="TCPClient.cpp" />
+    <ClCompile Include="TCPServer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

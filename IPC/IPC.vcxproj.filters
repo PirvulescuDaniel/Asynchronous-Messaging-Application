@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Request">
       <UniqueIdentifier>{bc68f1e0-130a-4cbd-bd2d-3bcbe56385cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\TCPServer">
+      <UniqueIdentifier>{7b97b560-c013-4c78-8954-43644e81833f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TCPServer">
+      <UniqueIdentifier>{7a8bb14f-d0ea-4a74-93db-dc5171aa936b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -54,6 +60,12 @@
     <ClInclude Include="RequestTextHandler.h">
       <Filter>Header Files\Request</Filter>
     </ClInclude>
+    <ClInclude Include="IServer.h">
+      <Filter>Header Files\TCPServer</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPServer.h">
+      <Filter>Header Files\TCPServer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -70,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="RequestTextHandler.cpp">
       <Filter>Source Files\Request</Filter>
+    </ClCompile>
+    <ClCompile Include="TCPServer.cpp">
+      <Filter>Source Files\TCPServer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

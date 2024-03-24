@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClInclude Include="IClient.h" />
     <ClInclude Include="IRequest.h" />
+    <ClInclude Include="IRequestHandler.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RequestEncoder.h" />
     <ClInclude Include="RequestText.h" />
+    <ClInclude Include="RequestTextHandler.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="TCPClient.h" />
   </ItemGroup>
@@ -160,6 +162,7 @@
     </ClCompile>
     <ClCompile Include="RequestEncoder.cpp" />
     <ClCompile Include="RequestText.cpp" />
+    <ClCompile Include="RequestTextHandler.cpp" />
     <ClCompile Include="TCPClient.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "TCPServer.h"
+#include "Acceptor.h"
 
 TCPServer::TCPServer()
 {
@@ -12,7 +13,8 @@ void TCPServer::Start(unsigned short aPort, unsigned int aThreadPoolSize)
 	assert(aThreadPoolSize > 0);
 
 	// Start accepting connection requests from clients.
-	//TODO
+	mAcceptor.reset(new Acceptor(mIoService, aPort));
+	mAcceptor->StartAccepting();
 
 	// Create several event processors.
 	for (int i = 0; i < aThreadPoolSize; i++)
@@ -32,6 +34,10 @@ void TCPServer::Stop()
 {
 	// Let the "run()" method to exit.
 	mWork.reset(nullptr);
+
+	mAcceptor->Stop();
+
+	mIoService.stop();
 
 	// Wait for the event processors to finish what is left.
 	for (auto& threadPool : mThreadPools)

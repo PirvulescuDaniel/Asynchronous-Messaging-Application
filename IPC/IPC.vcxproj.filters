@@ -66,6 +66,9 @@
     <ClInclude Include="TCPServer.h">
       <Filter>Header Files\TCPServer</Filter>
     </ClInclude>
+    <ClInclude Include="Acceptor.h">
+      <Filter>Header Files\TCPServer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source Files\Request</Filter>
     </ClCompile>
     <ClCompile Include="TCPServer.cpp">
+      <Filter>Source Files\TCPServer</Filter>
+    </ClCompile>
+    <ClCompile Include="Acceptor.cpp">
       <Filter>Source Files\TCPServer</Filter>
     </ClCompile>
   </ItemGroup>

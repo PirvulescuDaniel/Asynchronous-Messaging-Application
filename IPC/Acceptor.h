@@ -9,7 +9,7 @@ public:
 
 	Acceptor(asio::io_service& aIoService, unsigned short aPort)
 		:mIoService(aIoService)
-		, mAcceptor(mIoService, asio::ip::tcp::endpoint(asio::ip::address_v4::any(), aPort))
+		,mAcceptor(mIoService, asio::ip::tcp::endpoint(asio::ip::address_v4::any(), aPort))
 	{
 	}
 
@@ -37,4 +37,5 @@ private:
 
 	asio::io_service&       mIoService;
 	asio::ip::tcp::acceptor mAcceptor;
+	std::atomic_bool        mStopped{ true };
 };

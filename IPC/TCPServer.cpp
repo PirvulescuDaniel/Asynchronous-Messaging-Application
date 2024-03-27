@@ -32,9 +32,6 @@ void TCPServer::Start(unsigned short aPort, unsigned int aThreadPoolSize)
 
 void TCPServer::Stop()
 {
-	// Let the "run()" method to exit.
-	mWork.reset(nullptr);
-
 	mAcceptor->Stop();
 
 	mIoService.stop();

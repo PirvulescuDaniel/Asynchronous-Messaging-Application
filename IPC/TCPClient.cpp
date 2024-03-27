@@ -65,8 +65,6 @@ void TCPClient::Close()
 	// Let the "run()" method to exit.
 	mWork.reset(nullptr);
 
-	mIoService.stop();
-
 	if (mServiceThreadPool && mServiceThreadPool->joinable())
 		mServiceThreadPool->join();
 }

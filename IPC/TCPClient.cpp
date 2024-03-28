@@ -130,8 +130,9 @@ void TCPClient::OnSent(SessionPtr aSession)
 
 void TCPClient::OnReceived(SessionPtr aSession)
 {
+	// TO BE MODIFIED
 	std::istream responseStream(&aSession->mResponseBuffer);
-	std::getline(responseStream, aSession->mResponse);
+	std::getline(responseStream, aSession->mResponse, '\n');
 	
 	OnRequestComplete(aSession);
 }

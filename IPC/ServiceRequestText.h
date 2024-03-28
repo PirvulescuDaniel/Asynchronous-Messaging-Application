@@ -23,7 +23,7 @@ private:
 	/*
 		It will be called after the request has been received.
 	*/
-	void OnRequestReceived();
+	void OnRequestReceived(const asio::error_code& aErrorCode, std::size_t aBytesTransferred);
 
 	/*
 		It process the request and generate and send a response.
@@ -35,5 +35,12 @@ private:
 	*/
 	void OnResponseSent(const asio::error_code& aErrorCode, std::size_t aBytesTransferred);
 
-	SocketPtr mSocket;
+	/*
+		Clean-up.
+	*/
+	void OnFinish();
+
+	SocketPtr       mSocket;
+	asio::streambuf mRequestBuffer;
+	std::string     mResponse;
 };

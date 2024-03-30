@@ -72,6 +72,9 @@
     <ClInclude Include="ServiceRequestText.h">
       <Filter>Header Files\TCPServer</Filter>
     </ClInclude>
+    <ClInclude Include="IService.h">
+      <Filter>Header Files\TCPServer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

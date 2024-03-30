@@ -144,6 +144,7 @@
     <ClInclude Include="IRequest.h" />
     <ClInclude Include="IRequestHandler.h" />
     <ClInclude Include="IServer.h" />
+    <ClInclude Include="IService.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RequestEncoder.h" />
     <ClInclude Include="RequestText.h" />

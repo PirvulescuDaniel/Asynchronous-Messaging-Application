@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Acceptor.h"
+#include "ServiceDispatcher.h"
 
 void Acceptor::StartAccepting()
 {
@@ -35,7 +36,8 @@ void Acceptor::OnAccept(const asio::error_code& aErrorCode, CommunicationSocket 
 	else
 	{
 		// From this point aCommunicationSocket is valid.
-		// TODO: handle the client request.
+		ServiceDispatcher dispatched(aCommunicationSocket);
+		dispatched.StartDispatching();
 	}
 
 	if (!mStopped.load())

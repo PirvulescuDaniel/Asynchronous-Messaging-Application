@@ -149,6 +149,7 @@
     <ClInclude Include="RequestEncoder.h" />
     <ClInclude Include="RequestText.h" />
     <ClInclude Include="RequestTextHandler.h" />
+    <ClInclude Include="ServiceDispatcher.h" />
     <ClInclude Include="ServiceRequestText.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="TCPClient.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="RequestEncoder.cpp" />
     <ClCompile Include="RequestText.cpp" />
     <ClCompile Include="RequestTextHandler.cpp" />
+    <ClCompile Include="ServiceDispatcher.cpp" />
     <ClCompile Include="ServiceRequestText.cpp" />
     <ClCompile Include="TCPClient.cpp" />
     <ClCompile Include="TCPServer.cpp" />

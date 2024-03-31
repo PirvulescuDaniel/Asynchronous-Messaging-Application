@@ -75,6 +75,9 @@
     <ClInclude Include="IService.h">
       <Filter>Header Files\TCPServer</Filter>
     </ClInclude>
+    <ClInclude Include="ServiceDispatcher.h">
+      <Filter>Header Files\TCPServer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -99,6 +102,9 @@
       <Filter>Source Files\TCPServer</Filter>
     </ClCompile>
     <ClCompile Include="ServiceRequestText.cpp">
+      <Filter>Source Files\TCPServer</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceDispatcher.cpp">
       <Filter>Source Files\TCPServer</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,7 +3,7 @@
 #include "pch.h"
 
 /*
-	Class responsible for handling a text-type request.
+	Class responsible for processing text-type request and sending the response.
 */
 class ServiceRequestText : public IService
 {
@@ -11,24 +11,24 @@ public:
 
 	using SocketPtr = std::shared_ptr<asio::ip::tcp::socket>;
 
-	ServiceRequestText(SocketPtr aSocket);
+	ServiceRequestText(SocketPtr aSocket, std::string_view aRequest);
 
 	/*
-		Start the handle process.
+		Start the processing.
 	*/
-	void StartHandling() override;
+	void Process() override;
 
 private:
 
 	/*
-		It will be called after the request has been received.
-	*/
-	void OnRequestReceived(const asio::error_code& aErrorCode, std::size_t aBytesTransferred);
-
-	/*
-		It process the request and generate and send a response.
+		Process the request.
 	*/
 	void ProcessRequest();
+
+	/*
+		Process the response.
+	*/
+	void ProcessResponse();
 
 	/*
 		It will be called after the response has been sent.
@@ -40,7 +40,7 @@ private:
 	*/
 	void OnFinish();
 
-	SocketPtr       mSocket;
-	asio::streambuf mRequestBuffer;
-	std::string     mResponse;
+	SocketPtr   mSocket;
+	std::string mRequest;
+	std::string mResponse;
 };

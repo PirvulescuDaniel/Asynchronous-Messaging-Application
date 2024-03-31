@@ -3,5 +3,5 @@
 class IService
 {
 public:
-	virtual void StartHandling() = 0;
+	virtual void Process() = 0;
 };

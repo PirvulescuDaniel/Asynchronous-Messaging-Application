@@ -14,11 +14,7 @@ void ServiceDispatcher::StartDispatching()
 	// TO BE MODIFIED
 
 	asio::async_read_until(*mSocket.get(), mRequestBuffer, '\n',
-		[this](const asio::error_code& aErrorCode, std::size_t aBytesTransferred)
-		{
-			OnRequestReceived(aErrorCode, aBytesTransferred);
-		}
-	);
+		std::bind(&ServiceDispatcher::OnRequestReceived, shared_from_this(), std::placeholders::_1, std::placeholders::_2));
 }
 
 void ServiceDispatcher::OnRequestReceived(const asio::error_code& aErrorCode, std::size_t aBytesTransferred)

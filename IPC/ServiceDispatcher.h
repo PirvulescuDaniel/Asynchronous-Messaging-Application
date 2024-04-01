@@ -6,7 +6,7 @@ class IService;
 /*
 	Class responsible for receiving the request, analyzing it and sending it to the appropriate service.
 */
-class ServiceDispatcher
+class ServiceDispatcher : public std::enable_shared_from_this<ServiceDispatcher>
 {
 public:
 

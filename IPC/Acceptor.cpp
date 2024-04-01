@@ -35,9 +35,9 @@ void Acceptor::OnAccept(const asio::error_code& aErrorCode, CommunicationSocket 
 		std::cout << aErrorCode.message() << ": " << aErrorCode.value();
 	else
 	{
-		// From this point aCommunicationSocket is valid.
-		ServiceDispatcher dispatched(aCommunicationSocket);
-		dispatched.StartDispatching();
+		// From this point aCommunicationSocket is valid. 
+		auto dispatcher = std::make_shared<ServiceDispatcher>(aCommunicationSocket);
+		dispatcher->StartDispatching();
 	}
 
 	if (!mStopped.load())

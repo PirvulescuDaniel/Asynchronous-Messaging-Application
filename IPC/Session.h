@@ -18,7 +18,7 @@ public:
           std::string_view  aServerIp,	
           unsigned short    aServerPort,
           RequestPtr        aRequest,
-	      RequestHandlerPtr aHandler)
+          RequestHandlerPtr aHandler)
     : mSocket(aIoService)
     , mServerEndpoint(asio::ip::address::from_string(aServerIp.data()), aServerPort)
     , mRequest(aRequest)

@@ -4,6 +4,7 @@
 #include "IRequest.h"
 #include "RequestEncoder.h"
 #include "IRequestHandler.h"
+#include "HandlerFactory.h"
 
 TCPClient::TCPClient()
 {
@@ -20,8 +21,10 @@ TCPClient::TCPClient()
 
 void TCPClient::SendRequest(RequestPtr aRequest, std::string_view aServerIp, unsigned short aServerPort)
 {
-	auto session = std::make_shared<Session>(mIoService, aServerIp, aServerPort, aRequest, nullptr); //to be modified.
+	HandlerFactory handlerFactory;
+	auto requestHandler = handlerFactory.Create(aRequest->GetType());
 
+	auto session = std::make_shared<Session>(mIoService, aServerIp, aServerPort, aRequest, std::move(requestHandler));
 	session->mSocket.open(session->mServerEndpoint.protocol());
 
 	{

@@ -78,6 +78,9 @@
     <ClInclude Include="ServiceDispatcher.h">
       <Filter>Header Files\TCPServer</Filter>
     </ClInclude>
+    <ClInclude Include="HandlerFactory.h">
+      <Filter>Header Files\Request</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -106,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="ServiceDispatcher.cpp">
       <Filter>Source Files\TCPServer</Filter>
+    </ClCompile>
+    <ClCompile Include="HandlerFactory.cpp">
+      <Filter>Source Files\Request</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

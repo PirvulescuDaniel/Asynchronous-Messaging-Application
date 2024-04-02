@@ -11,17 +11,18 @@ class Session
 {
 public:
 
-  using RequestPtr = std::shared_ptr<IRequest>;
+  using RequestPtr        = std::shared_ptr<IRequest>;
+  using RequestHandlerPtr = std::unique_ptr<IRequestHandler>;
 
   Session(asio::io_service& aIoService,
           std::string_view  aServerIp,	
           unsigned short    aServerPort,
           RequestPtr        aRequest,
-          IRequestHandler*  aHandler)
+	      RequestHandlerPtr aHandler)
     : mSocket(aIoService)
     , mServerEndpoint(asio::ip::address::from_string(aServerIp.data()), aServerPort)
     , mRequest(aRequest)
-    , mHandler(aHandler)
+    , mHandler(std::move(aHandler))
 	{
 	}
 
@@ -36,7 +37,7 @@ public:
 	std::mutex mCancelGuard;
 	bool       mCanceled{ false };
 
-	IRequestHandler* mHandler;
+	RequestHandlerPtr mHandler;
 
 	asio::error_code mErrorCode;
 };

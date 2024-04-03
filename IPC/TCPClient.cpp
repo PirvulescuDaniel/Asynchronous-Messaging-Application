@@ -85,9 +85,9 @@ void TCPClient::OnConnect(SessionPtr aSession)
 	}
 	
 	RequestEncoder encoder;
-	const auto encodedRequest = encoder.EncodeRequest(aSession->mRequest.get());
+	aSession->mEncodedRequest = encoder.EncodeRequest(aSession->mRequest.get());
 
-	asio::async_write(aSession->mSocket, asio::buffer(encodedRequest),
+	asio::async_write(aSession->mSocket, asio::buffer(aSession->mEncodedRequest),
 		[this,aSession](const asio::error_code& aErrorCode, std::size_t aBytesTransferred)
 		{
 			if (aErrorCode.value() != 0)

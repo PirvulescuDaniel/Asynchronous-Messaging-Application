@@ -29,7 +29,8 @@ public:
 	asio::ip::tcp::socket   mSocket;
 	asio::ip::tcp::endpoint mServerEndpoint;
 
-	RequestPtr mRequest;
+	RequestPtr  mRequest;
+	std::string mEncodedRequest;
 
 	std::string     mResponse;
 	asio::streambuf mResponseBuffer;

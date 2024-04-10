@@ -1,10 +1,10 @@
 #include "pch.h"
 #include "UDPBroadcastSender.h"
 
-UDPBroadcastSender::UDPBroadcastSender(ServicePtr aService, Endpoint aBroadcastEndpoint)
+UDPBroadcastSender::UDPBroadcastSender(asio::io_service& aService, std::string_view aIp, unsigned short aPort)
 	:mService(aService)
-	,mSocket(*mService.get())
-	,mBroadcastEndpoint(aBroadcastEndpoint)
+	,mSocket(mService)
+	,mBroadcastEndpoint(asio::ip::address::from_string(aIp.data()),aPort)
 {
 	mSocket.open(asio::ip::udp::v4());
 

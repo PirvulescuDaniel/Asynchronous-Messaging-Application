@@ -7,16 +7,16 @@ public:
 
 	using Socket     = asio::ip::udp::socket;
 	using Endpoint   = asio::ip::udp::endpoint;
-	using ServicePtr = std::shared_ptr<asio::io_service>;
 
-	UDPBroadcastSender(ServicePtr aService, Endpoint aBroadcastEndpoint);
+	UDPBroadcastSender() = default;
+	UDPBroadcastSender(asio::io_service& aService, std::string_view aIp, unsigned short aPort);
 
 	void BroadcastAsync(const std::string& aMessage);
 
 	void BroadcastSync(const std::string& aMessage);
 	
 private:
-	ServicePtr mService;
-	Socket     mSocket;
-	Endpoint   mBroadcastEndpoint;
+	asio::io_service& mService;
+	Socket	          mSocket;
+	Endpoint          mBroadcastEndpoint;
 };

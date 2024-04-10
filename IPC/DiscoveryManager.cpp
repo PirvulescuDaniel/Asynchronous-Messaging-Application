@@ -2,15 +2,15 @@
 #include "DiscoveryManager.h"
 #include "UDPBroadcastSender.h"
 
-DiscoveryManager::DiscoveryManager()
+DiscoveryManager::DiscoveryManager(std::string_view aBroadcastIP, unsigned short aPort)
+	:mBroadcaster(new UDPBroadcastSender(mIoService, aBroadcastIP, aPort))
 {
-	mBroadcaster.reset(nullptr);
 	mWorker.reset(new asio::io_service::work(mIoService));
 }
 
 void DiscoveryManager::Broadcast()
 {
-	// TODO
+	mBroadcaster->BroadcastAsync(mMessageHello);
 }
 
 void DiscoveryManager::StartRecurrentBroadcasting()

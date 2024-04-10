@@ -17,7 +17,7 @@ void TCPServer::Start(unsigned short aPort, unsigned int aThreadPoolSize)
 	mAcceptor->StartAccepting();
 
 	// Create several event processors.
-	for (int i = 0; i < aThreadPoolSize; i++)
+	for (unsigned int i = 0; i < aThreadPoolSize; i++)
 	{
 		ThreadPoolPtr threadPool(new std::thread(
 			[this]()

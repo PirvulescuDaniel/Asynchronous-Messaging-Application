@@ -30,7 +30,7 @@ namespace Utility
 
 		}
 
-		assert(addresses.empty());
+		assert(!addresses.empty());
 		return addresses;
 	}
 

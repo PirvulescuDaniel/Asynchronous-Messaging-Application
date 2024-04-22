@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Acceptor.h" />
+    <ClInclude Include="DiscoveryManager.h" />
     <ClInclude Include="HandlerFactory.h" />
     <ClInclude Include="IClient.h" />
     <ClInclude Include="IRequest.h" />
@@ -155,9 +156,12 @@
     <ClInclude Include="Session.h" />
     <ClInclude Include="TCPClient.h" />
     <ClInclude Include="TCPServer.h" />
+    <ClInclude Include="UDPBroadcastSender.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Acceptor.cpp" />
+    <ClCompile Include="DiscoveryManager.cpp" />
     <ClCompile Include="HandlerFactory.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -176,6 +180,8 @@
     <ClCompile Include="ServiceRequestText.cpp" />
     <ClCompile Include="TCPClient.cpp" />
     <ClCompile Include="TCPServer.cpp" />
+    <ClCompile Include="UDPBroadcastSender.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -31,6 +31,18 @@
     <Filter Include="Source Files\TCPServer">
       <UniqueIdentifier>{7a8bb14f-d0ea-4a74-93db-dc5171aa936b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Discovery">
+      <UniqueIdentifier>{c2e6a056-db51-46c6-9aef-3f0c0a2564e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Discovery">
+      <UniqueIdentifier>{a09a6a55-528e-4e57-96e1-9f9c6895fc77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utility">
+      <UniqueIdentifier>{2de9c956-b45d-4c9a-8cd0-11203bcd2b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{235e59e5-7041-4221-8d39-f51b66d04b65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -81,6 +93,15 @@
     <ClInclude Include="HandlerFactory.h">
       <Filter>Header Files\Request</Filter>
     </ClInclude>
+    <ClInclude Include="UDPBroadcastSender.h">
+      <Filter>Header Files\Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="DiscoveryManager.h">
+      <Filter>Header Files\Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -112,6 +133,15 @@
     </ClCompile>
     <ClCompile Include="HandlerFactory.cpp">
       <Filter>Source Files\Request</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPBroadcastSender.cpp">
+      <Filter>Source Files\Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="DiscoveryManager.cpp">
+      <Filter>Source Files\Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Source Files\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

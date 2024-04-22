@@ -49,7 +49,7 @@ private:
 	std::atomic_bool mBroadcastStoped {true};
 
 	std::string mMessageHello {"Hello"};
-	std::string mMessageBye		{"Bye"};
+	std::string mMessageBye   {"Bye"};
 
 	TimerPtr mTimer;
 };

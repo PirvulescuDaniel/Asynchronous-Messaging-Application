@@ -6,6 +6,7 @@
 #include <functional>
 #include <mutex>
 #include <istream>
+#include <regex>
 
 //STL
 #include <string>

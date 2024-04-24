@@ -48,8 +48,8 @@ private:
 	BroadcasterPtr   mBroadcaster;
 	std::atomic_bool mBroadcastStoped {true};
 
-	std::string mMessageHello {"Hello"};
-	std::string mMessageBye   {"Bye"};
+	std::string mMessageHello;
+	std::string mMessageBye;
 
 	TimerPtr mTimer;
 };

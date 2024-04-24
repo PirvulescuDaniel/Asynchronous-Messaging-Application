@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "DiscoveryManager.h"
 #include "UDPBroadcastSender.h"
+#include "Utility.h"
 
 DiscoveryManager::DiscoveryManager(std::string_view aBroadcastIP, unsigned short aPort)
 	:mBroadcaster(new UDPBroadcastSender(mIoService, aBroadcastIP, aPort))
@@ -14,6 +15,11 @@ DiscoveryManager::DiscoveryManager(std::string_view aBroadcastIP, unsigned short
 			mIoService.run();
 		}
 	));
+
+	const auto& arpInterfaces = Utility::GetARPInterfaces();
+
+	mMessageHello = "HELLO " + arpInterfaces[0];
+	mMessageBye   = "BYE "   + arpInterfaces[0];
 }
 
 DiscoveryManager::~DiscoveryManager()

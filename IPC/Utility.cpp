@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Utility.h"
 
-using namespace std;
-
 namespace Utility
 {
 

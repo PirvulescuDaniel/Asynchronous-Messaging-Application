@@ -16,10 +16,19 @@ UDPBroadcastListener::UDPBroadcastListener(asio::io_service& aService, unsigned 
 
 void UDPBroadcastListener::StartListening()
 {
-	// TODO
+	auto buffer         = std::make_shared<std::string>(32, '0');
+	auto senderEndpoint = std::make_shared<asio::ip::udp::endpoint>();
+
+	mSocket.async_receive_from(
+		asio::buffer(*buffer), *senderEndpoint,
+		std::bind(&UDPBroadcastListener::HandleReceive, this, buffer, senderEndpoint)
+	);
 }
 
-void UDPBroadcastListener::HandleReceive()
+void UDPBroadcastListener::HandleReceive(BufferPtr aBuffer, EndpointPtr aSenderEndpoint)
 {
-	// TODO
+	// Start to listen the next datagram.
+	StartListening();
+
+	std::cout << "Message sent from " << aSenderEndpoint->address() << ": " << *aBuffer << std::endl;
 }

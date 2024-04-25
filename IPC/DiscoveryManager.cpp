@@ -5,8 +5,7 @@
 
 DiscoveryManager::DiscoveryManager(std::string_view aBroadcastIP, unsigned short aPort)
 	:mBroadcastSender(new UDPBroadcastSender(mIoService, aBroadcastIP, aPort))
-	,mBroadcastListener(new UDPBroadcastListener(mIoService,aPort) )
-	,mTimer(nullptr)
+	,mBroadcastListener(new UDPBroadcastListener(mIoService,aPort))
 {
 	mWorker.reset(new asio::io_service::work(mIoService));
 
@@ -35,20 +34,12 @@ void DiscoveryManager::Broadcast(const std::string& aMessage)
 
 void DiscoveryManager::StartRecurrentBroadcasting(BroadcastDelay aDelay)
 {
-	// Do not start another recurrent broadcasting if another is already in progress.
-	if (!mBroadcastStoped)
-		return;
-
-	mBroadcastStoped = false;
-	mTimer.reset(new asio::steady_timer(mIoService, aDelay));
-	
-	if(mTimer)
-		mTimer->async_wait(std::bind(&DiscoveryManager::HandleTimeExpired, this, std::placeholders::_1, aDelay));
+	mBroadcastSender->StartBroadcasting(mMessageHello, aDelay);
 }
 
 void DiscoveryManager::StopRecurrentBroadcasting()
 {
-	mBroadcastStoped = true;
+	mBroadcastSender->StopBroadcasting();
 }
 
 void DiscoveryManager::StartListening()
@@ -59,22 +50,4 @@ void DiscoveryManager::StartListening()
 void DiscoveryManager::StopListening()
 {
 	mBroadcastListener->StopListening();
-}
-
-void DiscoveryManager::HandleTimeExpired(const asio::error_code& aErrorCode, BroadcastDelay aDelay)
-{
-	// Stop the recurrent broadcasting process if errors have occurred.
-	if (aErrorCode.value() != 0)
-	{
-		mBroadcastStoped = true;
-		return;
-	}
-
-	if (mBroadcastStoped)
-		return;
-
-	mBroadcastSender->BroadcastAsync(mMessageHello);
-
-	mTimer->expires_at(mTimer->expiry() + aDelay);
-	mTimer->async_wait(std::bind(&DiscoveryManager::HandleTimeExpired, this, std::placeholders::_1, aDelay));
 }

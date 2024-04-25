@@ -14,7 +14,6 @@ public:
 	using ListenerPtr    = std::unique_ptr<UDPBroadcastListener>;
 	using Endpoint       = asio::ip::udp::endpoint;
 	using BroadcastDelay = std::chrono::seconds;
-	using TimerPtr       = std::unique_ptr<asio::steady_timer>;
 
 	DiscoveryManager(std::string_view aBroadcastIP, unsigned short aPort);
 
@@ -47,22 +46,13 @@ public:
 
 private:
 
-	/*
-		Handle the expiration of the timer.
-		If there are errors, we stop the process. otherwise we do another broadcast.
-	*/
-	void HandleTimeExpired(const asio::error_code& aErrorCode, BroadcastDelay aDelay);
+	asio::io_service mIoService;
+	WorkerPtr        mWorker;
+	ThreadWorker     mThreadWorker;
 
-	asio::io_service   mIoService;
-	WorkerPtr          mWorker;
-	ThreadWorker       mThreadWorker;
-
-	SenderPtr        mBroadcastSender;
-	ListenerPtr      mBroadcastListener;
-	std::atomic_bool mBroadcastStoped {true};
+	SenderPtr   mBroadcastSender;
+	ListenerPtr mBroadcastListener;
 
 	std::string mMessageHello {"Hello"};
 	std::string mMessageBye   {"Bye"};
-
-	TimerPtr mTimer;
 };

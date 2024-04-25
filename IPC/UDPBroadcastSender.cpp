@@ -22,7 +22,43 @@ void UDPBroadcastSender::BroadcastAsync(const std::string& aMessage)
 	);
 }
 
+void UDPBroadcastSender::StartBroadcasting(const std::string& aMessage, BroadcastDelay aDelay)
+{
+	// Do not start another broadcasting process if another is already in progress.
+	if (!mStopped)
+		return;
+
+	mStopped = false;
+	mTimer.reset(new asio::steady_timer(mService, aDelay));
+
+	if (mTimer)
+		mTimer->async_wait(std::bind(&UDPBroadcastSender::HandleTimeExpired, this, std::placeholders::_1, aDelay, aMessage));
+}
+
+void UDPBroadcastSender::StopBroadcasting()
+{
+	mStopped = true;
+}
+
 void UDPBroadcastSender::BroadcastSync(const std::string& aMessage)
 {
 	mSocket.send_to(asio::buffer(aMessage), mBroadcastEndpoint);
+}
+
+void UDPBroadcastSender::HandleTimeExpired(const asio::error_code& aErrorCode, BroadcastDelay aDelay, const std::string& aMessage)
+{
+	// Stop the recurrent broadcasting process if errors have occurred.
+	if (aErrorCode.value() != 0)
+	{
+		mStopped = true;
+		return;
+	}
+
+	if (mStopped)
+		return;
+
+	BroadcastAsync(aMessage);
+
+	mTimer->expires_at(mTimer->expiry() + aDelay);
+	mTimer->async_wait(std::bind(&UDPBroadcastSender::HandleTimeExpired, this, std::placeholders::_1, aDelay, aMessage));
 }

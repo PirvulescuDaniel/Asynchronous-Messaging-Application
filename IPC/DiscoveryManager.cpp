@@ -3,7 +3,7 @@
 #include "UDPBroadcastSender.h"
 
 DiscoveryManager::DiscoveryManager(std::string_view aBroadcastIP, unsigned short aPort)
-	:mBroadcaster(new UDPBroadcastSender(mIoService, aBroadcastIP, aPort))
+	:mBroadcastSender(new UDPBroadcastSender(mIoService, aBroadcastIP, aPort))
 	,mTimer(nullptr)
 {
 	mWorker.reset(new asio::io_service::work(mIoService));
@@ -18,7 +18,7 @@ DiscoveryManager::DiscoveryManager(std::string_view aBroadcastIP, unsigned short
 
 DiscoveryManager::~DiscoveryManager()
 {
-	mBroadcaster->BroadcastSync(mMessageBye);
+	mBroadcastSender->BroadcastSync(mMessageBye);
 
 	mWorker.reset(nullptr);
 
@@ -28,7 +28,7 @@ DiscoveryManager::~DiscoveryManager()
 
 void DiscoveryManager::Broadcast(const std::string& aMessage)
 {
-	mBroadcaster->BroadcastAsync(aMessage);
+	mBroadcastSender->BroadcastAsync(aMessage);
 }
 
 void DiscoveryManager::StartRecurrentBroadcasting(BroadcastDelay aDelay)
@@ -61,7 +61,7 @@ void DiscoveryManager::HandleTimeExpired(const asio::error_code& aErrorCode, Bro
 	if (mBroadcastStoped)
 		return;
 
-	mBroadcaster->BroadcastAsync(mMessageHello);
+	mBroadcastSender->BroadcastAsync(mMessageHello);
 
 	mTimer->expires_at(mTimer->expiry() + aDelay);
 	mTimer->async_wait(std::bind(&DiscoveryManager::HandleTimeExpired, this, std::placeholders::_1, aDelay));

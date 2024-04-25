@@ -102,6 +102,9 @@
     <ClInclude Include="Utility.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="UDPBroadcastListener.h">
+      <Filter>Header Files\Discovery</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -142,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="Utility.cpp">
       <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="UDPBroadcastListener.cpp">
+      <Filter>Source Files\Discovery</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

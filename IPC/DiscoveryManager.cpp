@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "DiscoveryManager.h"
 #include "UDPBroadcastSender.h"
+#include "UDPBroadcastListener.h"
 
 DiscoveryManager::DiscoveryManager(std::string_view aBroadcastIP, unsigned short aPort)
 	:mBroadcastSender(new UDPBroadcastSender(mIoService, aBroadcastIP, aPort))
+	,mBroadcastListener(new UDPBroadcastListener(mIoService,aPort) )
 	,mTimer(nullptr)
 {
 	mWorker.reset(new asio::io_service::work(mIoService));
@@ -47,6 +49,16 @@ void DiscoveryManager::StartRecurrentBroadcasting(BroadcastDelay aDelay)
 void DiscoveryManager::StopRecurrentBroadcasting()
 {
 	mBroadcastStoped = true;
+}
+
+void DiscoveryManager::StartListening()
+{
+	mBroadcastListener->StartListening();
+}
+
+void DiscoveryManager::StopListening()
+{
+	mBroadcastListener->StopListening();
 }
 
 void DiscoveryManager::HandleTimeExpired(const asio::error_code& aErrorCode, BroadcastDelay aDelay)

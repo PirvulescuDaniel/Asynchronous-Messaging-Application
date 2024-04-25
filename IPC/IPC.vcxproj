@@ -156,6 +156,7 @@
     <ClInclude Include="Session.h" />
     <ClInclude Include="TCPClient.h" />
     <ClInclude Include="TCPServer.h" />
+    <ClInclude Include="UDPBroadcastListener.h" />
     <ClInclude Include="UDPBroadcastSender.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
@@ -180,6 +181,7 @@
     <ClCompile Include="ServiceRequestText.cpp" />
     <ClCompile Include="TCPClient.cpp" />
     <ClCompile Include="TCPServer.cpp" />
+    <ClCompile Include="UDPBroadcastListener.cpp" />
     <ClCompile Include="UDPBroadcastSender.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>

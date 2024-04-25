@@ -2,6 +2,7 @@
 #include "pch.h"
 
 class UDPBroadcastSender;
+class UDPBroadcastListener;
 
 class DiscoveryManager
 {
@@ -10,6 +11,7 @@ public:
 	using WorkerPtr      = std::unique_ptr<asio::io_service::work>;
 	using ThreadWorker   = std::unique_ptr<std::thread>;
 	using SenderPtr      = std::unique_ptr<UDPBroadcastSender>;
+	using ListenerPtr    = std::unique_ptr<UDPBroadcastListener>;
 	using Endpoint       = asio::ip::udp::endpoint;
 	using BroadcastDelay = std::chrono::seconds;
 	using TimerPtr       = std::unique_ptr<asio::steady_timer>;
@@ -33,6 +35,16 @@ public:
 	*/
 	void StopRecurrentBroadcasting();
 
+	/*
+		Start the listening process.
+	*/
+	void StartListening();
+
+	/*
+		Stop the listening process.
+	*/
+	void StopListening();
+
 private:
 
 	/*
@@ -46,6 +58,7 @@ private:
 	ThreadWorker       mThreadWorker;
 
 	SenderPtr        mBroadcastSender;
+	ListenerPtr      mBroadcastListener;
 	std::atomic_bool mBroadcastStoped {true};
 
 	std::string mMessageHello {"Hello"};

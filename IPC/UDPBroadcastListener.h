@@ -16,6 +16,11 @@ public:
 	*/
 	void StartListening();
 
+	/*
+		Stop the listening process.
+	*/
+	void StopListening();
+
 private:
 
 	/*
@@ -26,4 +31,6 @@ private:
 	asio::io_service& mService;
 	Socket            mSocket;
 	unsigned short    mPort;
+
+	std::atomic_bool mStopped{ true };
 };

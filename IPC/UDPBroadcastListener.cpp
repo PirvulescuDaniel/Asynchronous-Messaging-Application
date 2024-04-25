@@ -16,6 +16,8 @@ UDPBroadcastListener::UDPBroadcastListener(asio::io_service& aService, unsigned 
 
 void UDPBroadcastListener::StartListening()
 {
+	mStopped = false;
+
 	auto buffer         = std::make_shared<std::string>(32, '0');
 	auto senderEndpoint = std::make_shared<asio::ip::udp::endpoint>();
 
@@ -25,10 +27,17 @@ void UDPBroadcastListener::StartListening()
 	);
 }
 
+void UDPBroadcastListener::StopListening()
+{
+	mStopped = true;
+}
+
 void UDPBroadcastListener::HandleReceive(BufferPtr aBuffer, EndpointPtr aSenderEndpoint)
 {
 	// Start to listen the next datagram.
-	StartListening();
+	if(!mStopped)
+		StartListening();
 
+	// TO BE MODIFIED
 	std::cout << "Message sent from " << aSenderEndpoint->address() << ": " << *aBuffer << std::endl;
 }

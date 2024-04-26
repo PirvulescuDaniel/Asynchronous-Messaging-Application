@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "UDPBroadcastListener.h"
+#include "Utility.h"
 
 namespace
 {
@@ -42,6 +43,19 @@ void UDPBroadcastListener::HandleReceive(BufferPtr aBuffer, EndpointPtr aSenderE
 	// Start to listen the next datagram.
 	if(!mStopped)
 		StartListening();
+
+	// Do not handle our own broadcast messages.
+	const auto & arpInterfaces = Utility::GetARPInterfaces();
+
+	const auto& found = std::any_of(arpInterfaces.begin(), arpInterfaces.end(),
+		[&aSenderEndpoint](const std::string& aIp)
+		{
+			return aIp == aSenderEndpoint->address().to_string();
+		}
+	);
+
+	if (found)
+		return;
 
 	// TO BE MODIFIED
 	std::cout << "Message sent from " << aSenderEndpoint->address() << ": " << *aBuffer << std::endl;

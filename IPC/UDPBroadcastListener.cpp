@@ -16,9 +16,6 @@ UDPBroadcastListener::UDPBroadcastListener(asio::io_service& aService, unsigned 
 
 void UDPBroadcastListener::StartListening()
 {
-	if (!mStopped)
-		return;
-
 	mStopped = false;
 
 	auto buffer         = std::make_shared<std::string>(32, '0');

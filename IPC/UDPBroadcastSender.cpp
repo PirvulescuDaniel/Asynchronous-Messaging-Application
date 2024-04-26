@@ -32,7 +32,7 @@ void UDPBroadcastSender::StartBroadcasting(const std::string& aMessage, Broadcas
 	mTimer.reset(new asio::steady_timer(mService, aDelay));
 
 	if (mTimer)
-		mTimer->async_wait(std::bind(&UDPBroadcastSender::HandleTimeExpired, this, std::placeholders::_1, aDelay, aMessage));
+		mTimer->async_wait(std::bind(&UDPBroadcastSender::HandleTimeExpired, this, std::placeholders::_1, aDelay, std::ref(aMessage)));
 }
 
 void UDPBroadcastSender::StopBroadcasting()
@@ -60,5 +60,5 @@ void UDPBroadcastSender::HandleTimeExpired(const asio::error_code& aErrorCode, B
 	BroadcastAsync(aMessage);
 
 	mTimer->expires_at(mTimer->expiry() + aDelay);
-	mTimer->async_wait(std::bind(&UDPBroadcastSender::HandleTimeExpired, this, std::placeholders::_1, aDelay, aMessage));
+	mTimer->async_wait(std::bind(&UDPBroadcastSender::HandleTimeExpired, this, std::placeholders::_1, aDelay, std::ref(aMessage)));
 }

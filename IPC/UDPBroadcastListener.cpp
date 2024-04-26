@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "UDPBroadcastListener.h"
 
+namespace
+{
+	constexpr const unsigned int kDatagramLength = 8;
+}
+
 UDPBroadcastListener::UDPBroadcastListener(asio::io_service& aService, unsigned short aPort)
 	:mService(aService)
 	,mSocket(mService)
@@ -18,7 +23,7 @@ void UDPBroadcastListener::StartListening()
 {
 	mStopped = false;
 
-	auto buffer         = std::make_shared<std::string>(32, '0');
+	auto buffer         = std::make_shared<std::string>(kDatagramLength, '0');
 	auto senderEndpoint = std::make_shared<asio::ip::udp::endpoint>();
 
 	mSocket.async_receive_from(

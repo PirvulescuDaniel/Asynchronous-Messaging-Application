@@ -4,6 +4,35 @@
 
 namespace winrt::AppInterface::implementation
 {
+    // Register the control properties.
+    Windows::UI::Xaml::DependencyProperty UserModel::mUsernameProperty = Windows::UI::Xaml::DependencyProperty::Register(
+        L"Username",
+        winrt::xaml_typename<winrt::hstring>(),
+        winrt::xaml_typename<AppInterface::UserModel>(),
+        Windows::UI::Xaml::PropertyMetadata{ winrt::box_value(L"Username")}
+    );
+
+    Windows::UI::Xaml::DependencyProperty UserModel::mAddressProperty = Windows::UI::Xaml::DependencyProperty::Register(
+      L"Address",
+      winrt::xaml_typename<winrt::hstring>(),
+      winrt::xaml_typename<AppInterface::UserModel>(),
+      Windows::UI::Xaml::PropertyMetadata{ winrt::box_value(L"0.0.0.0") }
+    );
+
+    Windows::UI::Xaml::DependencyProperty UserModel::mIsOnlineProperty = Windows::UI::Xaml::DependencyProperty::Register(
+      L"IsOnline",
+      winrt::xaml_typename<bool>(),
+      winrt::xaml_typename<AppInterface::UserModel>(),
+      Windows::UI::Xaml::PropertyMetadata{ winrt::box_value(false) }
+    );
+
+    Windows::UI::Xaml::DependencyProperty UserModel::mImageProfilePathProperty = Windows::UI::Xaml::DependencyProperty::Register(
+      L"ImageProfilePath",
+      winrt::xaml_typename<winrt::hstring>(),
+      winrt::xaml_typename<AppInterface::UserModel>(),
+      Windows::UI::Xaml::PropertyMetadata{ winrt::box_value(L"C://image_path.jpg") }
+    );
+
     UserModel::UserModel()
     {
       DefaultStyleKey(winrt::box_value(L"AppInterface.UserModel"));

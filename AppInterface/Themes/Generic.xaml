@@ -9,12 +9,45 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:UserModel">
                     
-                    <!--TODO-->
-                    <Grid Width="100" Height="100">
-                        <TextBlock Text="{TemplateBinding Username}"/>
-                        <TextBlock Text="{TemplateBinding Address}"/>
-                        <TextBlock IsColorFontEnabled="{TemplateBinding IsOnline}"/>
-                        <TextBlock Text="{TemplateBinding ImageProfilePath}"/>
+                    <Grid Width="200" Height="50" Background="WhiteSmoke">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Ellipse Stroke="Black"
+                                 StrokeThickness="2"
+                                 Grid.RowSpan="3"
+                                 Grid.Column="0"
+                                 Margin="3">
+                                <Ellipse.Fill>
+                                    <ImageBrush Stretch="Uniform"
+                                                ImageSource="Assets/default_avatar.jpg">
+                                    </ImageBrush>
+                                </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock Text="{TemplateBinding Username}"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Normal">
+                        </TextBlock>
+                        <Ellipse Stroke="Black"
+                                 Visibility="{TemplateBinding IsOnline}"
+                                 Fill="Green"
+                                 Width="15"
+                                 Height="15"
+                                 Grid.Row="2"
+                                 Grid.Column="0"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Top"
+                                 Margin="0,-5,2,-5">
+                        </Ellipse>
                     </Grid>
                     
                 </ControlTemplate>

@@ -9,7 +9,7 @@
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Button x:Name="myButton" Click="ClickHandler">Click Me</Button>
-        <local:UserModel Username="xxx" Address="1.1.1.1" IsOnline="False" ImageProfilePath="path"/>
+        <local:UserModel Username="Stefan Daniel" Address="1.1.1.1" IsOnline="True" ImageProfilePath="path"/>
     </StackPanel>
     
 </Page>

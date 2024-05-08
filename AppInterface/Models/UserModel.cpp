@@ -30,7 +30,7 @@ namespace winrt::AppInterface::implementation
       L"ImageProfilePath",
       winrt::xaml_typename<winrt::hstring>(),
       winrt::xaml_typename<AppInterface::UserModel>(),
-      Windows::UI::Xaml::PropertyMetadata{ winrt::box_value(L"C://image_path.jpg") }
+      Windows::UI::Xaml::PropertyMetadata{ winrt::box_value(L"Assets/default_avatar.jpg") }
     );
 
     UserModel::UserModel()

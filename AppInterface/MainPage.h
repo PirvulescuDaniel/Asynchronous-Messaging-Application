@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "MainPage.g.h"
+#include "Models/UserModel.h"
 
 namespace winrt::AppInterface::implementation
 {

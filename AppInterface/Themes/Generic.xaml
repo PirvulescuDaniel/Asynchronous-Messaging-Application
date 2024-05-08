@@ -1,0 +1,25 @@
+﻿ <!-- \Themes\Generic.xaml -->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppInterface">
+
+    <Style TargetType="local:UserModel" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:UserModel">
+                    
+                    <!--TODO-->
+                    <Grid Width="100" Height="100">
+                        <TextBlock Text="{TemplateBinding Username}"/>
+                        <TextBlock Text="{TemplateBinding Address}"/>
+                        <TextBlock IsColorFontEnabled="{TemplateBinding IsOnline}"/>
+                        <TextBlock Text="{TemplateBinding ImageProfilePath}"/>
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+     
+</ResourceDictionary>

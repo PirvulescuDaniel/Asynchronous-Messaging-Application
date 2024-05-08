@@ -1,0 +1,21 @@
+// UserModel.idl
+
+namespace AppInterface
+{
+	runtimeclass UserModel : Windows.UI.Xaml.Controls.Control
+	{
+		UserModel();
+
+		static Windows.UI.Xaml.DependencyProperty UsernameProperty{ get; };
+		String Username;
+
+		static Windows.UI.Xaml.DependencyProperty AddressProperty{ get; };
+		String Address;
+
+		static Windows.UI.Xaml.DependencyProperty IsOnlineProperty{ get; };
+		Boolean IsOnline;
+
+		static Windows.UI.Xaml.DependencyProperty ImageProfilePathProperty{ get; };
+		String ImageProfilePath;
+	}
+}

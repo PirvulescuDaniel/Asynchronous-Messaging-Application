@@ -38,7 +38,6 @@
                                    FontWeight="Normal">
                         </TextBlock>
                         <Ellipse Stroke="Black"
-                                 Visibility="{TemplateBinding IsOnline}"
                                  Fill="Green"
                                  Width="15"
                                  Height="15"
@@ -46,7 +45,8 @@
                                  Grid.Column="0"
                                  HorizontalAlignment="Right"
                                  VerticalAlignment="Top"
-                                 Margin="0,-5,2,-5">
+                                 Margin="0,-5,2,-5"
+                                 Visibility="{TemplateBinding IsOnline}">
                         </Ellipse>
                     </Grid>
                     

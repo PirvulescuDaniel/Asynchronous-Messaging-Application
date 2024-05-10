@@ -12,6 +12,7 @@
     <Midl Include="MainPage.idl" />
     <Midl Include="Models\UserModel.idl" />
     <Midl Include="Utility\BooleanToVisibilityConvertor.idl" />
+    <Midl Include="ViewModels\UserViewModel.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -20,11 +21,13 @@
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="Models\UserModel.cpp" />
     <ClCompile Include="Utility\BooleanToVisibilityConvertor.cpp" />
+    <ClCompile Include="ViewModels\UserViewModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Models\UserModel.h" />
     <ClInclude Include="Utility\BooleanToVisibilityConvertor.h" />
+    <ClInclude Include="ViewModels\UserViewModel.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

@@ -1,0 +1,11 @@
+// UserViewModel.idl
+
+import "UserModel.idl";
+
+namespace AppInterface
+{
+  runtimeclass UserViewModel
+  {
+    Windows.Foundation.Collections.IObservableVector<UserModel> Users{ get; };
+  }
+}

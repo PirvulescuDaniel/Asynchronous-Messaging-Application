@@ -3,6 +3,7 @@
 #include "MainPage.g.h"
 #include "Models/UserModel.h"
 #include "Utility/BooleanToVisibilityConvertor.h"
+#include "ViewModels/UserViewModel.h"
 
 namespace winrt::AppInterface::implementation
 {
@@ -10,13 +11,13 @@ namespace winrt::AppInterface::implementation
     {
         MainPage();
 
-        int32_t MyProperty();
-        void MyProperty(int32_t value);
+        winrt::AppInterface::UserViewModel UserViewModel();
 
-        void ClickHandler(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
+    private:
+        
+        AppInterface::UserViewModel mUserViewModel{ nullptr };
     };
 }
-
 namespace winrt::AppInterface::factory_implementation
 {
     struct MainPage : MainPageT<MainPage, implementation::MainPage>

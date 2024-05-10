@@ -9,21 +9,13 @@ namespace winrt::AppInterface::implementation
 {
     MainPage::MainPage()
     {
-        InitializeComponent();
+      InitializeComponent();
+
+      mUserViewModel = winrt::make<AppInterface::implementation::UserViewModel>();
     }
 
-    int32_t MainPage::MyProperty()
+    winrt::AppInterface::UserViewModel MainPage::UserViewModel()
     {
-        throw hresult_not_implemented();
-    }
-
-    void MainPage::MyProperty(int32_t /* value */)
-    {
-        throw hresult_not_implemented();
-    }
-
-    void MainPage::ClickHandler(IInspectable const&, RoutedEventArgs const&)
-    {
-        myButton().Content(box_value(L"Clicked"));
+      return mUserViewModel;
     }
 }

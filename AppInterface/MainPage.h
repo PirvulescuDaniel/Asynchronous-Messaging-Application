@@ -2,6 +2,7 @@
 
 #include "MainPage.g.h"
 #include "Models/UserModel.h"
+#include "Utility/BooleanToVisibilityConvertor.h"
 
 namespace winrt::AppInterface::implementation
 {

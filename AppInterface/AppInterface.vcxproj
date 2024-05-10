@@ -117,6 +117,7 @@
     <ClInclude Include="MainPage.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Utility\BooleanToVisibilityConvertor.h" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -156,6 +157,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="Utility\BooleanToVisibilityConvertor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl">
@@ -165,6 +167,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Midl>
     <Midl Include="Models\UserModel.idl" />
+    <Midl Include="Utility\BooleanToVisibilityConvertor.idl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

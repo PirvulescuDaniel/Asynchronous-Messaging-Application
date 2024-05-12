@@ -18,4 +18,14 @@ namespace winrt::AppInterface::implementation
     {
       return mUserViewModel;
     }
+
+    void MainPage::OnAddNewUser(winrt::Windows::Foundation::IInspectable const& /*sender*/, winrt::Windows::UI::Xaml::RoutedEventArgs const& /*e*/)
+    {
+      auto user = winrt::make<AppInterface::implementation::UserModel>();
+
+      user.Username(L"Pirvulescu Daniel");
+      user.IsOnline(true);
+
+      mUserViewModel.Users().Append(user);
+    }
 }

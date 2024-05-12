@@ -7,8 +7,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <local:UserModel Username="Stefan Daniel" Address="1.1.1.1" IsOnline="True" ImageProfilePath="path"/>
-    </StackPanel>
-    
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Left pane-->
+        
+        <ListBox ItemsSource="{x:Bind UserViewModel.Users}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="local:UserModel">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+         <!--Right pane-->
+        
+        <Canvas Grid.Column="1" Background="LightGray"/>
+
+        <Button Grid.Column="1" Click="OnAddNewUser">Add new user</Button>
+        
+
+    </Grid>
+
 </Page>

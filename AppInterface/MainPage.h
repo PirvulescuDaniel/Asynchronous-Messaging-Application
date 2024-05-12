@@ -13,6 +13,8 @@ namespace winrt::AppInterface::implementation
 
         winrt::AppInterface::UserViewModel UserViewModel();
 
+        void OnAddNewUser(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+
     private:
         
         AppInterface::UserViewModel mUserViewModel{ nullptr };

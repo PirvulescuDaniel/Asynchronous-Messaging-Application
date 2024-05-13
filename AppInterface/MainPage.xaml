@@ -19,17 +19,10 @@
         </Grid.ColumnDefinitions>
         
         <!--Left pane-->
-        
-        <ListBox ItemsSource="{x:Bind UserViewModel.Users}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="local:UserModel">
-                    <Setter Property="Padding" Value="0"/>
-                    <Setter Property="Margin" Value="0"/>
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
 
-         <!--Right pane-->
+        <ListBox ItemsSource="{x:Bind UserViewModel.Users}"/>
+
+        <!--Right pane-->
         
         <Canvas Grid.Column="1" Background="LightGray"/>
 

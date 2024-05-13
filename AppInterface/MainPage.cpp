@@ -23,7 +23,7 @@ namespace winrt::AppInterface::implementation
     {
       auto user = winrt::make<AppInterface::implementation::UserModel>();
 
-      user.Username(L"Pirvulescu Daniel");
+      user.Username(L"Daniel Stefan");
       user.IsOnline(true);
 
       mUserViewModel.Users().Append(user);

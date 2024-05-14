@@ -42,9 +42,9 @@ void DiscoveryManager::StopRecurrentBroadcasting()
 	mBroadcastSender->StopBroadcasting();
 }
 
-void DiscoveryManager::StartListening()
+void DiscoveryManager::StartListening(Callback aCallback)
 {
-	mBroadcastListener->StartListening();
+	mBroadcastListener->StartListening(aCallback);
 }
 
 void DiscoveryManager::StopListening()

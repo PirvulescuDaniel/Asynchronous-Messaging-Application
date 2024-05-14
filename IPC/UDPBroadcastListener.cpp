@@ -20,7 +20,7 @@ UDPBroadcastListener::UDPBroadcastListener(asio::io_service& aService, unsigned 
 	mSocket.bind(asio::ip::udp::endpoint(asio::ip::address_v4::any(), aPort));
 }
 
-void UDPBroadcastListener::StartListening()
+void UDPBroadcastListener::StartListening(Callback aCallback)
 {
 	mStopped = false;
 
@@ -29,7 +29,7 @@ void UDPBroadcastListener::StartListening()
 
 	mSocket.async_receive_from(
 		asio::buffer(*buffer), *senderEndpoint,
-		std::bind(&UDPBroadcastListener::HandleReceive, this, buffer, senderEndpoint)
+		std::bind(&UDPBroadcastListener::HandleReceive, this, buffer, senderEndpoint, aCallback)
 	);
 }
 
@@ -38,11 +38,11 @@ void UDPBroadcastListener::StopListening()
 	mStopped = true;
 }
 
-void UDPBroadcastListener::HandleReceive(BufferPtr aBuffer, EndpointPtr aSenderEndpoint)
+void UDPBroadcastListener::HandleReceive(BufferPtr aBuffer, EndpointPtr aSenderEndpoint, Callback aCallback)
 {
 	// Start to listen the next datagram.
 	if(!mStopped)
-		StartListening();
+		StartListening(aCallback);
 
 	// Do not handle our own broadcast messages.
 	const auto & arpInterfaces = Utility::GetARPInterfaces();
@@ -57,6 +57,5 @@ void UDPBroadcastListener::HandleReceive(BufferPtr aBuffer, EndpointPtr aSenderE
 	if (found)
 		return;
 
-	// TO BE MODIFIED
-	std::cout << "Message sent from " << aSenderEndpoint->address() << ": " << *aBuffer << std::endl;
+	aCallback(aSenderEndpoint->address().to_string(), *aBuffer);
 }

@@ -14,6 +14,7 @@ public:
 	using ListenerPtr    = std::unique_ptr<UDPBroadcastListener>;
 	using Endpoint       = asio::ip::udp::endpoint;
 	using BroadcastDelay = std::chrono::seconds;
+	using Callback       = std::function<void(std::string, std::string)>;
 
 	DiscoveryManager(std::string_view aBroadcastIP, unsigned short aPort);
 
@@ -37,7 +38,7 @@ public:
 	/*
 		Start the listening process.
 	*/
-	void StartListening();
+	void StartListening(Callback aCallback);
 
 	/*
 		Stop the listening process.

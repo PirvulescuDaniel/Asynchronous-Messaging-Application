@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IPC", "IPC\IPC.vcxproj", "{D5838CF2-E6D3-4284-BDC1-A640AF0F2CAC}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AppInterface", "AppInterface\AppInterface.vcxproj", "{4E557CEA-17C9-4A12-B506-C14EB0AEF0F8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D5838CF2-E6D3-4284-BDC1-A640AF0F2CAC} = {D5838CF2-E6D3-4284-BDC1-A640AF0F2CAC}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,16 +9,16 @@ namespace winrt::AppInterface::implementation
     {
         UserViewModel();
 
-        ~UserViewModel();
-
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::AppInterface::UserModel> Users();
 
     private:
 
         void HandleReceivedListenerMessages(std::string aSender, std::string aMessage);
 
+        void OnSuspending(Windows::Foundation::IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&);
+
         Windows::Foundation::Collections::IObservableVector<AppInterface::UserModel> mUsers;
 
-        DiscoveryManager mDiscoveryManager;
+        std::unique_ptr<DiscoveryManager> mDiscoveryManagerPtr;
     };
 }

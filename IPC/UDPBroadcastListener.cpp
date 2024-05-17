@@ -45,6 +45,7 @@ void UDPBroadcastListener::HandleReceive(BufferPtr aBuffer, EndpointPtr aSenderE
 		StartListening(aCallback);
 
 	// Do not handle our own broadcast messages.
+	/*
 	const auto & arpInterfaces = Utility::GetARPInterfaces();
 
 	const auto& found = std::any_of(arpInterfaces.begin(), arpInterfaces.end(),
@@ -56,6 +57,7 @@ void UDPBroadcastListener::HandleReceive(BufferPtr aBuffer, EndpointPtr aSenderE
 
 	if (found)
 		return;
-
+	*/
+	
 	aCallback(aSenderEndpoint->address().to_string(), *aBuffer);
 }

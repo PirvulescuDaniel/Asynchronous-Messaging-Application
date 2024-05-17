@@ -3,7 +3,7 @@
 
 namespace Utility
 {
-
+	[[deprecated("This function uses _popen() API which cannot be used in Windows Runtime.")]]
 	std::vector<std::string> GetARPInterfaces()
 	{
 		const char* const command = "arp -a";

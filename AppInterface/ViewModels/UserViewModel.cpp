@@ -52,7 +52,7 @@ namespace winrt::AppInterface::implementation
       auto dispatcher = CoreApplication::MainView().CoreWindow().Dispatcher();
 
       if (aMessage.find(kHelloMessage) != std::string::npos)
-        dispatcher.RunAsync(winrt::Windows::UI::Core::CoreDispatcherPriority::Normal,std::bind(&UserViewModel::OnOnlineUser,this,senderIp));
+        dispatcher.RunAsync(winrt::Windows::UI::Core::CoreDispatcherPriority::Normal, std::bind(&UserViewModel::OnOnlineUser, this, senderIp));
       else if (aMessage.find(kByeMessage) != std::string::npos)
         dispatcher.RunAsync(winrt::Windows::UI::Core::CoreDispatcherPriority::Normal, std::bind(&UserViewModel::OnOfflineUser, this, senderIp));
     }

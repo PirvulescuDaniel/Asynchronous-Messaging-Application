@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "UserViewModel.h"
 #include "UserViewModel.g.cpp"
+#include "winrt/Windows.Networking.Connectivity.h"
+
+using namespace winrt;
+using namespace Windows::Networking::Connectivity;
 
 namespace
 {
@@ -21,6 +25,8 @@ namespace winrt::AppInterface::implementation
       mDiscoveryManagerPtr->StartRecurrentBroadcasting(kBroadcastDelay);
 
       Windows::UI::Xaml::Application::Current().Suspending({ this,&UserViewModel::OnSuspending });
+
+      GetArpInterfaces();
     }
 
     winrt::Windows::Foundation::Collections::IObservableVector<winrt::AppInterface::UserModel> UserViewModel::Users()
@@ -30,8 +36,23 @@ namespace winrt::AppInterface::implementation
 
     void UserViewModel::HandleReceivedListenerMessages(std::string aSender, std::string aMessage)
     {
-      aSender;
-      aMessage;
+      const auto& senderIp      = winrt::to_hstring(aSender);
+      const auto& senderMessage = winrt::to_hstring(aMessage);
+
+      // Do not handle our own broadcast messages.
+      if (std::find(mArpInterfaces.begin(), mArpInterfaces.end(), senderIp) != mArpInterfaces.end())
+        return;
+    }
+
+    void UserViewModel::GetArpInterfaces()
+    {
+      const auto& hostNames = Windows::Networking::Connectivity::NetworkInformation::GetHostNames();
+
+      for (const auto& host : hostNames)
+      {
+        if (host.Type() == Windows::Networking::HostNameType::Ipv4)
+          mArpInterfaces.push_back(host.CanonicalName());
+      }
     }
 
     void UserViewModel::OnSuspending(Windows::Foundation::IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&)

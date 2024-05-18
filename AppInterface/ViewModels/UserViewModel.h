@@ -19,6 +19,10 @@ namespace winrt::AppInterface::implementation
 
         void OnSuspending(Windows::Foundation::IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&);
 
+        void OnOnlineUser(const winrt::hstring& aUserIp);
+
+        void OnOfflineUser(const winrt::hstring& aUserIp);
+
         std::unique_ptr<DiscoveryManager> mDiscoveryManagerPtr;
         std::vector<winrt::hstring>       mArpInterfaces;
 

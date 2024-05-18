@@ -26,9 +26,6 @@
         
         <Canvas Grid.Column="1" Background="LightGray"/>
 
-        <Button Grid.Column="1" Click="OnAddNewUser">Add new user</Button>
-        
-
     </Grid>
 
 </Page>

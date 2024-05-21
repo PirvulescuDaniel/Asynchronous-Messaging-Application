@@ -23,8 +23,49 @@
         <ListBox ItemsSource="{x:Bind UserViewModel.Users}"/>
 
         <!--Right pane-->
-        
-        <Canvas Grid.Column="1" Background="LightGray"/>
+
+        <Grid x:Name="RightPane" Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Canvas Grid.Row="0" Background="LightCyan"/>
+
+            <Grid Grid.Row="1" x:Name="RightBottomPane">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="TextPane"
+                         Grid.Column="0"
+                         Width="Auto"
+                         Height="Auto"
+                         PlaceholderText="Type a message..."
+                         TextWrapping="Wrap"
+                         Background="AliceBlue"
+                         IsSpellCheckEnabled="False"
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+                <Button Grid.Column="1"
+                        Content="Click me"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"/>
+
+            </Grid>
+
+        </Grid>
 
     </Grid>
 

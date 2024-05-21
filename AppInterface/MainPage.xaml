@@ -59,9 +59,14 @@
                          ScrollViewer.VerticalScrollBarVisibility="Auto"/>
 
                 <Button Grid.Column="1"
-                        Content="Click me"
                         HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"/>
+                        VerticalAlignment="Stretch">
+                    <Button.Content>
+                        <Viewbox Stretch="Uniform">
+                            <FontIcon Glyph="&#xE122;"/>
+                        </Viewbox>
+                    </Button.Content>
+                </Button>
 
             </Grid>
 

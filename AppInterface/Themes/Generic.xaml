@@ -6,8 +6,9 @@
   
   <!--Convertors-->
   <local:BooleanToVisibilityConvertor x:Key="BooleanToVisibilityConvertor"/>
-
-  <Style TargetType="local:UserModel" >
+    
+    <!--UserModel Style-->
+    <Style TargetType="local:UserModel" >
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:UserModel">
@@ -57,5 +58,46 @@
             </Setter.Value>
         </Setter>
     </Style>
-     
+
+    <!--TextMessageModel Style-->
+    <Style TargetType="local:TextMessageModel">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:TextMessageModel">
+
+                    <Border Margin="5" CornerRadius="10">
+                        <Grid Background="{TemplateBinding Background}">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" MaxWidth="500"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0"
+                                   Text="{TemplateBinding Message}"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Foreground="White"
+                                   Padding="5"
+                                   TextWrapping="Wrap"/>
+
+                            <TextBlock Grid.Row="1"
+                                   Text="{TemplateBinding Timestamp}"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Bottom"
+                                   Foreground="DarkGray"
+                                   Padding="5"/>
+
+                        </Grid>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

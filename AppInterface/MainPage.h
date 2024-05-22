@@ -2,6 +2,7 @@
 
 #include "MainPage.g.h"
 #include "Models/UserModel.h"
+#include "Models/TextMessageModel.h"
 #include "Utility/BooleanToVisibilityConvertor.h"
 #include "ViewModels/UserViewModel.h"
 

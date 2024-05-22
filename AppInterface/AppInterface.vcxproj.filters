@@ -13,6 +13,7 @@
     <Midl Include="Models\UserModel.idl" />
     <Midl Include="Utility\BooleanToVisibilityConvertor.idl" />
     <Midl Include="ViewModels\UserViewModel.idl" />
+    <Midl Include="Models\TextMessageModel.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -22,12 +23,14 @@
     <ClCompile Include="Models\UserModel.cpp" />
     <ClCompile Include="Utility\BooleanToVisibilityConvertor.cpp" />
     <ClCompile Include="ViewModels\UserViewModel.cpp" />
+    <ClCompile Include="Models\TextMessageModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Models\UserModel.h" />
     <ClInclude Include="Utility\BooleanToVisibilityConvertor.h" />
     <ClInclude Include="ViewModels\UserViewModel.h" />
+    <ClInclude Include="Models\TextMessageModel.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

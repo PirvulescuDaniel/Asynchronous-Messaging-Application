@@ -1,0 +1,15 @@
+// TextMessageModel.idl
+
+namespace AppInterface
+{
+	runtimeclass TextMessageModel : Windows.UI.Xaml.Controls.Control
+	{
+		TextMessageModel();
+
+		static Windows.UI.Xaml.DependencyProperty MessageProperty{ get; };
+		String Message;
+
+		static Windows.UI.Xaml.DependencyProperty TimestampProperty{ get; };
+		String Timestamp;
+	}
+}

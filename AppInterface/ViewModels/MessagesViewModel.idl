@@ -1,0 +1,13 @@
+// MessagesViewModel.idl
+
+import "TextMessageModel.idl";
+
+namespace AppInterface
+{
+	runtimeclass MessagesViewModel
+	{
+		MessagesViewModel();
+
+		Windows.Foundation.Collections.IObservableVector<TextMessageModel> GetUserMessages(String aUserIp);
+	}
+}

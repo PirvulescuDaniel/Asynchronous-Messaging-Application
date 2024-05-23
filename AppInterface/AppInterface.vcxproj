@@ -151,6 +151,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="Utility\BooleanToVisibilityConvertor.h" />
+    <ClInclude Include="ViewModels\MessagesViewModel.h" />
     <ClInclude Include="ViewModels\UserViewModel.h" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +194,7 @@
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="Utility\BooleanToVisibilityConvertor.cpp" />
+    <ClCompile Include="ViewModels\MessagesViewModel.cpp" />
     <ClCompile Include="ViewModels\UserViewModel.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +215,16 @@
     <Midl Include="Models\TextMessageModel.idl" />
     <Midl Include="Models\UserModel.idl" />
     <Midl Include="Utility\BooleanToVisibilityConvertor.idl" />
+    <Midl Include="ViewModels\MessagesViewModel.idl">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
+    </Midl>
     <Midl Include="ViewModels\UserViewModel.idl">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)\Models</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">$(ProjectDir)\Models</AdditionalIncludeDirectories>

@@ -13,6 +13,8 @@ namespace winrt::AppInterface::implementation
 
       mUserViewModel = winrt::make<AppInterface::implementation::UserViewModel>();
 
+      mMessagesViewModel = winrt::make<AppInterface::implementation::MessagesViewModel>();
+
       mCurrentSelectedUserMessages = winrt::single_threaded_observable_vector<AppInterface::TextMessageModel>();
     }
 

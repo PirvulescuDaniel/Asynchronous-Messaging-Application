@@ -5,6 +5,7 @@
 #include "Models/TextMessageModel.h"
 #include "Utility/BooleanToVisibilityConvertor.h"
 #include "ViewModels/UserViewModel.h"
+#include "ViewModels/MessagesViewModel.h"
 
 namespace winrt::AppInterface::implementation
 {
@@ -21,6 +22,8 @@ namespace winrt::AppInterface::implementation
     private:
         
         AppInterface::UserViewModel mUserViewModel{ nullptr };
+
+        AppInterface::MessagesViewModel mMessagesViewModel{ nullptr };
 
         Windows::Foundation::Collections::IObservableVector<AppInterface::TextMessageModel> mCurrentSelectedUserMessages{ nullptr };
     };

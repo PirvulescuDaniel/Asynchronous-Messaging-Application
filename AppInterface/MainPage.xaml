@@ -20,7 +20,7 @@
         
         <!--Left pane-->
 
-        <ListBox ItemsSource="{x:Bind UserViewModel.Users}"/>
+        <ListBox ItemsSource="{x:Bind UserViewModel.Users}" SelectionChanged="OnUserSelectionChanged"/>
 
         <!--Right pane-->
 

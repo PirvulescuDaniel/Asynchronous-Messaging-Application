@@ -28,7 +28,7 @@ namespace winrt::AppInterface::implementation
       return mCurrentSelectedUserMessages;
     }
 
-    void MainPage::OnSendMessage(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e)
+    void MainPage::OnSendMessage(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::UI::Xaml::RoutedEventArgs const&)
     {
       // TO BE MODIFIED
 
@@ -40,4 +40,10 @@ namespace winrt::AppInterface::implementation
 
       mCurrentSelectedUserMessages.Append(std::move(message));
     }
+
+    void MainPage::OnUserSelectionChanged(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::UI::Xaml::Controls::SelectionChangedEventArgs const&)
+    {
+      // TODO
+    }
 }
+

@@ -17,12 +17,12 @@ namespace winrt::AppInterface::implementation
 
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::AppInterface::TextMessageModel> CurrentSelectedUserMessages();
 
-        void OnSendMessage(winrt::Windows::Foundation::IInspectable const& sender, winrt::Windows::UI::Xaml::RoutedEventArgs const& e);
+        void OnSendMessage(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::UI::Xaml::RoutedEventArgs const&);
+        void OnUserSelectionChanged(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::UI::Xaml::Controls::SelectionChangedEventArgs const&);
 
     private:
         
-        AppInterface::UserViewModel mUserViewModel{ nullptr };
-
+        AppInterface::UserViewModel     mUserViewModel{ nullptr };
         AppInterface::MessagesViewModel mMessagesViewModel{ nullptr };
 
         Windows::Foundation::Collections::IObservableVector<AppInterface::TextMessageModel> mCurrentSelectedUserMessages{ nullptr };

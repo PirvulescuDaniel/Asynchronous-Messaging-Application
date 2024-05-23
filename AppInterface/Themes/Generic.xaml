@@ -74,7 +74,7 @@
                             </Grid.RowDefinitions>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" MaxWidth="500"/>
+                                <ColumnDefinition MaxWidth="500"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Row="0"
@@ -89,7 +89,7 @@
                                    Text="{TemplateBinding Timestamp}"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Bottom"
-                                   Foreground="DarkGray"
+                                   Foreground="Black"
                                    Padding="5"/>
 
                         </Grid>

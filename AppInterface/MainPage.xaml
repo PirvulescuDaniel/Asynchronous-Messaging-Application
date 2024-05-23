@@ -35,7 +35,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Canvas Grid.Row="0" Background="LightCyan"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="LightGray">
+                    <ItemsControl ItemsSource="{x:Bind CurrentSelectedUserMessages}"/>
+                </StackPanel>
+            </ScrollViewer>
 
             <Grid Grid.Row="1" x:Name="RightBottomPane">
 
@@ -60,7 +66,8 @@
 
                 <Button Grid.Column="1"
                         HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch">
+                        VerticalAlignment="Stretch"
+                        Click="OnSendMessage">
                     <Button.Content>
                         <Viewbox Stretch="Uniform">
                             <FontIcon Glyph="&#xE122;"/>

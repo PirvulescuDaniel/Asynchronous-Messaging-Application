@@ -1,6 +1,7 @@
 // MainPage.idl
 
 import "UserViewModel.idl";
+import "TextMessageModel.idl";
 
 namespace AppInterface
 {
@@ -10,5 +11,7 @@ namespace AppInterface
         MainPage();
         
         UserViewModel UserViewModel{ get; };
+
+        Windows.Foundation.Collections.IObservableVector<TextMessageModel> CurrentSelectedUserMessages{ get; };
     }
 }

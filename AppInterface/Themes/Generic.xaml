@@ -83,7 +83,8 @@
                                    VerticalAlignment="Top"
                                    Foreground="White"
                                    Padding="5"
-                                   TextWrapping="Wrap"/>
+                                   TextWrapping="Wrap"
+                                   IsTextSelectionEnabled="True"/>
 
                             <TextBlock Grid.Row="1"
                                    Text="{TemplateBinding Timestamp}"

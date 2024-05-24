@@ -9,5 +9,7 @@ namespace AppInterface
 		MessagesViewModel();
 
 		Windows.Foundation.Collections.IObservableVector<TextMessageModel> GetUserMessages(String aUserIp);
+
+		void AddMessageToConversation(String aUserIp, String aMessage, Boolean aReceived);
 	}
 }

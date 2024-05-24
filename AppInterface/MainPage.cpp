@@ -49,15 +49,14 @@ namespace winrt::AppInterface::implementation
 
     void MainPage::OnSendMessage(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::UI::Xaml::RoutedEventArgs const&)
     {
-      // TO BE MODIFIED
+      const auto& selectedUser = UsersListBox().SelectedItem().try_as<AppInterface::UserModel>();
+      const auto& textMessage = TextPane().Text();
 
-      auto message = winrt::make<AppInterface::implementation::TextMessageModel>();
+      if (!selectedUser || textMessage.empty())
+        return;
 
-      message.Message(L"Sa moara mata fraere.");
-      message.Timestamp(L"14:40 PM");
-      message.HorizontalAlignment(Windows::UI::Xaml::HorizontalAlignment::Right);
-
-      mCurrentSelectedUserMessages.Append(std::move(message));
+      mMessagesViewModel.AddMessageToConversation(selectedUser.Address(), textMessage, false);
+      TextPane().Text(L"");
     }
 
     void MainPage::OnUserSelectionChanged(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::UI::Xaml::Controls::SelectionChangedEventArgs const&)

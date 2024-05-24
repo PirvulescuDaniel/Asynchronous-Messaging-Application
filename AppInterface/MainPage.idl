@@ -6,12 +6,12 @@ import "TextMessageModel.idl";
 namespace AppInterface
 {
     [default_interface]
-    runtimeclass MainPage : Windows.UI.Xaml.Controls.Page
+    runtimeclass MainPage : Windows.UI.Xaml.Controls.Page, Windows.UI.Xaml.Data.INotifyPropertyChanged
     {
         MainPage();
         
         UserViewModel UserViewModel{ get; };
 
-        Windows.Foundation.Collections.IObservableVector<TextMessageModel> CurrentSelectedUserMessages{ get; };
+        Windows.Foundation.Collections.IObservableVector<TextMessageModel> CurrentSelectedUserMessages{ get; set; };
     }
 }

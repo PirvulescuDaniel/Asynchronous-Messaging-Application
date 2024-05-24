@@ -16,6 +16,10 @@ namespace winrt::AppInterface::implementation
         winrt::AppInterface::UserViewModel UserViewModel();
 
         winrt::Windows::Foundation::Collections::IObservableVector<winrt::AppInterface::TextMessageModel> CurrentSelectedUserMessages();
+        void CurrentSelectedUserMessages(winrt::Windows::Foundation::Collections::IObservableVector<winrt::AppInterface::TextMessageModel> const& value);
+
+        winrt::event_token PropertyChanged(winrt::Windows::UI::Xaml::Data::PropertyChangedEventHandler const& handler);
+        void PropertyChanged(winrt::event_token const& token) noexcept;
 
         void OnSendMessage(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::UI::Xaml::RoutedEventArgs const&);
         void OnUserSelectionChanged(winrt::Windows::Foundation::IInspectable const&, winrt::Windows::UI::Xaml::Controls::SelectionChangedEventArgs const&);
@@ -24,6 +28,8 @@ namespace winrt::AppInterface::implementation
         
         AppInterface::UserViewModel     mUserViewModel{ nullptr };
         AppInterface::MessagesViewModel mMessagesViewModel{ nullptr };
+
+        winrt::event<Windows::UI::Xaml::Data::PropertyChangedEventHandler> mPropertyChanged;
 
         Windows::Foundation::Collections::IObservableVector<AppInterface::TextMessageModel> mCurrentSelectedUserMessages{ nullptr };
     };

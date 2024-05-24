@@ -20,7 +20,9 @@
         
         <!--Left pane-->
 
-        <ListBox ItemsSource="{x:Bind UserViewModel.Users}" SelectionChanged="OnUserSelectionChanged"/>
+        <ListBox x:Name="UsersListBox"
+                 ItemsSource="{x:Bind UserViewModel.Users, Mode=OneWay}"
+                 SelectionChanged="OnUserSelectionChanged"/>
 
         <!--Right pane-->
 
@@ -39,7 +41,7 @@
                 <StackPanel HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Background="LightGray">
-                    <ItemsControl ItemsSource="{x:Bind CurrentSelectedUserMessages}"/>
+                    <ItemsControl ItemsSource="{x:Bind CurrentSelectedUserMessages, Mode=OneWay}"/>
                 </StackPanel>
             </ScrollViewer>
 

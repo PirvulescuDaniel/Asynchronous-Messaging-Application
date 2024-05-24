@@ -3,7 +3,11 @@
 #include "MainPage.g.cpp"
 
 using namespace winrt;
+using namespace Windows::System;
 using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Controls;
+using namespace Windows::UI::Xaml::Input;
+
 
 namespace winrt::AppInterface::implementation
 {
@@ -16,6 +20,23 @@ namespace winrt::AppInterface::implementation
       mMessagesViewModel = winrt::make<AppInterface::implementation::MessagesViewModel>();
 
       mCurrentSelectedUserMessages = winrt::single_threaded_observable_vector<AppInterface::TextMessageModel>();
+
+      TextPane().KeyDown(
+        [this](const auto& sender, const winrt::Windows::UI::Xaml::Input::KeyRoutedEventArgs& args)
+        {
+          if (args.Key() == Windows::System::VirtualKey::Enter)
+            OnSendMessage(sender, args);
+        });
+
+      //Debug:
+      auto user1 = winrt::make<AppInterface::implementation::UserModel>();
+      user1.Address(L"1.2.3.4");
+
+      auto user2 = winrt::make<AppInterface::implementation::UserModel>();
+      user2.Address(L"5.6.7.8");
+
+      mUserViewModel.Users().Append(std::move(user1));
+      mUserViewModel.Users().Append(std::move(user2));
     }
 
     winrt::AppInterface::UserViewModel MainPage::UserViewModel()

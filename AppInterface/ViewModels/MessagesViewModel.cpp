@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "MessagesViewModel.h"
 #include "MessagesViewModel.g.cpp"
+#include "IPC/IRequest.h"
+#include "IPC/RequestText.h"
 
 namespace winrt::AppInterface::implementation
 {
@@ -8,11 +10,19 @@ namespace winrt::AppInterface::implementation
     {
       auto kSendAlignment     = Windows::UI::Xaml::HorizontalAlignment::Right;
       auto kReceivedAlignment = Windows::UI::Xaml::HorizontalAlignment::Left;
+
+      constexpr unsigned short kPort = 3333;
     }
 
     MessagesViewModel::MessagesViewModel()
+      :mClientPtr(std::make_unique<TCPClient>())
+      ,mServerPtr(std::make_unique<TCPServer>())
     {
       mMessagesMap = winrt::single_threaded_observable_map<winrt::hstring, MessagesObservableVector>();
+
+      Windows::UI::Xaml::Application::Current().Suspending({ this,&MessagesViewModel::OnSuspending });
+
+      mServerPtr->Start(kPort, 2);
     }
 
     winrt::Windows::Foundation::Collections::IObservableVector<winrt::AppInterface::TextMessageModel> MessagesViewModel::GetUserMessages(hstring const& aUserIp)
@@ -59,6 +69,23 @@ namespace winrt::AppInterface::implementation
 
       conversation.Append(std::move(message));
 
-      //TODO: Send the message if !aReceived
+      if (!aReceived)
+      {
+        const std::string messageStr(aMessage.begin(), aMessage.end());
+        const std::string userIpStr(aUserIp.begin(), aUserIp.end());
+
+        std::shared_ptr<IRequest> request = std::make_shared<RequestText>(messageStr, 1);
+
+        mClientPtr->SendRequest(request, userIpStr, kPort);
+      }
+    }
+
+    void MessagesViewModel::OnSuspending(Windows::Foundation::IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&)
+    {
+      mClientPtr->Close();
+      mClientPtr.reset(nullptr);
+
+      mServerPtr->Stop();
+      mServerPtr.reset(nullptr);
     }
 }

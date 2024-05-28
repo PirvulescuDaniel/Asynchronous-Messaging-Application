@@ -8,12 +8,12 @@ TCPServer::TCPServer()
 	mWork.reset(new asio::io_service::work(mIoService));
 }
 
-void TCPServer::Start(unsigned short aPort, unsigned int aThreadPoolSize)
+void TCPServer::Start(unsigned short aPort, unsigned int aThreadPoolSize, UICallback aCallback)
 {
 	assert(aThreadPoolSize > 0);
 
 	// Start accepting connection requests from clients.
-	mAcceptor.reset(new Acceptor(mIoService, aPort));
+	mAcceptor.reset(new Acceptor(mIoService, aPort, aCallback));
 	mAcceptor->StartAccepting();
 
 	// Create several event processors.

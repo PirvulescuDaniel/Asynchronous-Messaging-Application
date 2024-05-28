@@ -22,7 +22,7 @@ namespace winrt::AppInterface::implementation
 
       Windows::UI::Xaml::Application::Current().Suspending({ this,&MessagesViewModel::OnSuspending });
 
-      mServerPtr->Start(kPort, 2);
+      mServerPtr->Start(kPort, 2, std::bind(&MessagesViewModel::AddMessageToConversation, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     }
 
     winrt::Windows::Foundation::Collections::IObservableVector<winrt::AppInterface::TextMessageModel> MessagesViewModel::GetUserMessages(hstring const& aUserIp)

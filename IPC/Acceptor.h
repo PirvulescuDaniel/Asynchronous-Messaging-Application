@@ -6,10 +6,12 @@ class Acceptor
 public:
 
 	using CommunicationSocket = std::shared_ptr<asio::ip::tcp::socket>;
+	using UICallback          = std::function<void(const wchar_t *, const wchar_t *, bool)>;
 
-	Acceptor(asio::io_service& aIoService, unsigned short aPort)
+	Acceptor(asio::io_service& aIoService, unsigned short aPort, UICallback aCallback)
 		:mIoService(aIoService)
 		,mAcceptor(mIoService, asio::ip::tcp::endpoint(asio::ip::address_v4::any(), aPort))
+		,mCallback(aCallback)
 	{
 	}
 
@@ -38,4 +40,6 @@ private:
 	asio::io_service&       mIoService;
 	asio::ip::tcp::acceptor mAcceptor;
 	std::atomic_bool        mStopped{ true };
+
+	UICallback mCallback;
 };

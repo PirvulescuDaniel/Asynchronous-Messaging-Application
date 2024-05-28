@@ -16,7 +16,7 @@ public:
 	/*
 		Starts the server.
 	*/
-	void Start(unsigned short aPort, unsigned int aThreadPoolSize) override;
+	void Start(unsigned short aPort, unsigned int aThreadPoolSize, UICallback aCallback) override;
 
 	/*
 		Stop the server. Blocks the thread that calls it!

@@ -4,6 +4,10 @@
 #include "IPC/IRequest.h"
 #include "IPC/RequestText.h"
 
+using namespace winrt;
+using namespace Windows::ApplicationModel::Core;
+using namespace Windows::UI::Core;
+
 namespace winrt::AppInterface::implementation
 {
     namespace
@@ -44,40 +48,45 @@ namespace winrt::AppInterface::implementation
 
     void MessagesViewModel::AddMessageToConversation(hstring const& aUserIp, hstring const& aMessage, bool aReceived)
     {
-      // Add the message to conversation
-      auto conversation = GetUserMessages(aUserIp);
+      CoreApplication::MainView().CoreWindow().Dispatcher().RunAsync(Windows::UI::Core::CoreDispatcherPriority::Normal,
+        [=]()
+        {
+          // Add the message to conversation
+          auto conversation = GetUserMessages(aUserIp);
 
-      auto message = winrt::make<AppInterface::implementation::TextMessageModel>();
-      message.Message(aMessage);
-      message.HorizontalAlignment(aReceived ? kReceivedAlignment : kSendAlignment);
+          auto message = winrt::make<AppInterface::implementation::TextMessageModel>();
+          message.Message(aMessage);
+          message.HorizontalAlignment(aReceived ? kReceivedAlignment : kSendAlignment);
 
-      const auto& sendBgBrush     = Windows::UI::Xaml::Media::SolidColorBrush(Windows::UI::Colors::DeepSkyBlue());
-      const auto& receivedBgBrush = Windows::UI::Xaml::Media::SolidColorBrush(Windows::UI::ColorHelper::FromArgb(255, 154, 154, 154));
+          const auto& sendBgBrush = Windows::UI::Xaml::Media::SolidColorBrush(Windows::UI::Colors::DeepSkyBlue());
+          const auto& receivedBgBrush = Windows::UI::Xaml::Media::SolidColorBrush(Windows::UI::ColorHelper::FromArgb(255, 154, 154, 154));
 
-      message.Background(aReceived ? receivedBgBrush : sendBgBrush);
+          message.Background(aReceived ? receivedBgBrush : sendBgBrush);
 
-      auto currentTime        = std::chrono::system_clock::now();
-      auto currentTime_time_t = std::chrono::system_clock::to_time_t(currentTime);
+          auto currentTime = std::chrono::system_clock::now();
+          auto currentTime_time_t = std::chrono::system_clock::to_time_t(currentTime);
 
-      std::tm currentTime_tm;
-      localtime_s(&currentTime_tm, &currentTime_time_t);
+          std::tm currentTime_tm;
+          localtime_s(&currentTime_tm, &currentTime_time_t);
 
-      std::wstringstream timeStream;
-      timeStream << std::put_time(&currentTime_tm, L"%I:%M %p");
+          std::wstringstream timeStream;
+          timeStream << std::put_time(&currentTime_tm, L"%I:%M %p");
 
-      message.Timestamp(timeStream.str());
+          message.Timestamp(timeStream.str());
 
-      conversation.Append(std::move(message));
+          conversation.Append(std::move(message));
 
-      if (!aReceived)
-      {
-        const std::string messageStr(aMessage.begin(), aMessage.end());
-        const std::string userIpStr(aUserIp.begin(), aUserIp.end());
+          if (!aReceived)
+          {
+            const std::string messageStr(aMessage.begin(), aMessage.end());
+            const std::string userIpStr(aUserIp.begin(), aUserIp.end());
 
-        std::shared_ptr<IRequest> request = std::make_shared<RequestText>(messageStr, 1);
+            std::shared_ptr<IRequest> request = std::make_shared<RequestText>(messageStr, 1);
 
-        mClientPtr->SendRequest(request, userIpStr, kPort);
-      }
+            mClientPtr->SendRequest(request, userIpStr, kPort);
+          }
+        }
+      );
     }
 
     void MessagesViewModel::OnSuspending(Windows::Foundation::IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&)

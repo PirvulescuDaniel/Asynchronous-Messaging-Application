@@ -27,16 +27,6 @@ namespace winrt::AppInterface::implementation
           if (args.Key() == Windows::System::VirtualKey::Enter)
             OnSendMessage(sender, args);
         });
-
-      //Debug:
-      auto user1 = winrt::make<AppInterface::implementation::UserModel>();
-      user1.Address(L"1.2.3.4");
-
-      auto user2 = winrt::make<AppInterface::implementation::UserModel>();
-      user2.Address(L"5.6.7.8");
-
-      mUserViewModel.Users().Append(std::move(user1));
-      mUserViewModel.Users().Append(std::move(user2));
     }
 
     winrt::AppInterface::UserViewModel MainPage::UserViewModel()

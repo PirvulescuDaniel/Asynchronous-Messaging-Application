@@ -37,7 +37,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ScrollViewer x:Name="ChatScroll" VerticalScrollBarVisibility="Auto">
                 <StackPanel HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Background="LightGray">

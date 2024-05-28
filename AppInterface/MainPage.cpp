@@ -86,6 +86,9 @@ namespace winrt::AppInterface::implementation
 
       if (const auto user = listItem.try_as<AppInterface::UserModel>())
         CurrentSelectedUserMessages(mMessagesViewModel.GetUserMessages(user.Address()));
+
+      ChatScroll().UpdateLayout();
+      ChatScroll().ScrollToVerticalOffset(ChatScroll().ScrollableHeight());
     }
 }
 

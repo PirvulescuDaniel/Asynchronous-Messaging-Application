@@ -75,18 +75,18 @@ namespace winrt::AppInterface::implementation
           message.Timestamp(timeStream.str());
 
           conversation.Append(std::move(message));
-
-          if (!aReceived)
-          {
-            const std::string messageStr(aMessage.begin(), aMessage.end());
-            const std::string userIpStr(aUserIp.begin(), aUserIp.end());
-
-            std::shared_ptr<IRequest> request = std::make_shared<RequestText>(messageStr, 1);
-
-            mClientPtr->SendRequest(request, userIpStr, kPort);
-          }
         }
       );
+
+      if (!aReceived)
+      {
+        const std::string messageStr(aMessage.begin(), aMessage.end());
+        const std::string userIpStr(aUserIp.begin(), aUserIp.end());
+
+        std::shared_ptr<IRequest> request = std::make_shared<RequestText>(messageStr, 1);
+
+        mClientPtr->SendRequest(request, userIpStr, kPort);
+      }
     }
 
     void MessagesViewModel::OnSuspending(Windows::Foundation::IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&)
